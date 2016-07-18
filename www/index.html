@@ -53,9 +53,11 @@
 						
 			var mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
-			google.maps.event.addListener(mapa, "click", function(){
+			google.maps.event.addListener(mapa, "click", function(event){
 				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
-				alert("click");
+				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
+				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
+				alert(event.latlng);
 			});
 		}// Fin muestra mapa
 				
