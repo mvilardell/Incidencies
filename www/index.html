@@ -15,33 +15,75 @@
 	}
 </style>
 <!-- Carregar GoogleMaps Api V3-->
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?sensor=false">
-</script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js">
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script>
 	$(document).on("ready", function(){
-		//COORDENADES INICIALS -13.163622,-72.545926
-		//VARIABLE PER A PUNT INICIAL
-		var punto = new google.maps.LatLng(-13.163622,-72.545926);
-		//VARIABLE PER A CONFIGURACI” INICIAL
-		var config = {
-			zoom:16,
-			center:punto,
-			mapTypeId: google.maps.MapType.ROADMAP
-		};
-		//VARIABLE MAPA
-		var mapa = new google.maps.Map( $("#mapa")[0], config );
+		var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
+				
+		if (navigator.geolocation) {
+		    function exito(pos) {
+				MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+			function falla(error) {
+				//si falla mostrar mpara en posicion por defecto
+				alert('Error en servicio Geolocalizador');
+				MuestraMapa(defaultPos); 
+			}
+						
+			//maximumAge- Guarda la posicion por 5 minutos 
+			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
+			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
+			var options = {maximumAge: 500000, enableHighAccuracy:true, timeout: 5000};
+			navigator.geolocation.getCurrentPosition(exito, falla, options );
+		}//FIN IF
+		else {
+            MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
+        }
+	
+					 
+		//FUNCION DIBUJAR MAPa
+		function MuestraMapa(latlng) {
+			//Recuperar puntos
+			var capa = String(latlng);
+			var res = capa.replace(/\(|\)/g, '');//Quitar los parentesis
+			var latitud=  res.substring(0, res.indexOf(','));
+			var longitud=  res.substring(res.indexOf(",") + 2);
+			$('#LatY').val(latitud);
+			$('#LongX').val(longitud);
+			
+			var myOptions = {
+            zoom: 16,
+            center: latlng,
+			disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP};
+						
+			var map = new google.maps.Map(document.getElementById("mapa"), myOptions);
+						
+			var infowindow = new google.maps.InfoWindow({
+														position: latlng,
+														content: '<p>Tu posici√≥n actual</p>'+latlng
+													});
+						
+			var marker = new google.maps.Marker({
+												position: latlng,
+												map: map,
+												title: "Mi posici√≥n",
+												animation: google.maps.Animation.DROP
+											});
+			google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});
+						 
+		}// Fin muestra mapa
+				
 	});
 </script>
 </head>
 <body>
 	<div id="mapa">
-		<h2>AquÌ anir‡ el mapa!</h2>
+		<h2>Aqu√≠ anir√† el mapa!</h2>
 	</div>
 	<div id="infor">
-		<h2>AquÌ anir‡ l'informaciÛ</h2>
+		<h2>Aqu√≠ anir√† l'informaci√≥</h2>
 	</div>
 </body>
 </html>
