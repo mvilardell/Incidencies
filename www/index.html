@@ -68,9 +68,21 @@
 				var llista = coordenades.split(",");
 				
 				//MOSTRAR COORDENADES PER SEPARAT
-				alert("La coordenada x es"+llista[0]);
-				alert("La coordenada y es"+llista[1]);
+				alert("La coordenada X es "+llista[0]);
+				alert("La coordenada Y es "+llista[1]);
 				
+				//VARIABLE PER DIRECCIÓ, PUNT O COORDENADA
+				var direccio = new google.maps.LatLng(llista[0], llista[1]);
+				
+				//VARIABLE PEL MARCADOR
+				var marcador = new google.maps.Marker({
+					position:direccio, //POSICIO DEL NOU MARCADOR
+					map: mapa //MAPA EN EL QUE S'UBICARÀ EL MARCADOR
+					animation:google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
+				});
+				//UBICAR EL MARCADOR EN EL MAPA
+				marcador.setMap(mapa);
 			});
 		}// Fin muestra mapa
 				
