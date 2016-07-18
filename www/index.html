@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<style>
+	#mapa{
+		width: 400px;
+		height: 400px;
+		float:left;
+		background: green;
+	}
+	#infor{
+		width: 400px;
+		height: 400px;
+		float:left;
+		background: blue;
+	}
+</style>
+<!-- Carregar GoogleMaps Api V3-->
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js">
+</script>
+<script>
+	$(document).on("ready", function(){
+		//COORDENADES INICIALS -13.163622,-72.545926
+		//VARIABLE PER A PUNT INICIAL
+		var punto = new google.maps.LatLng(-13.163622,-72.545926);
+		//VARIABLE PER A CONFIGURACIÓ INICIAL
+		var config = {
+			zoom:16,
+			center:punto,
+			mapTypeId: google.maps.MapType.ROADMAP
+		};
+		//VARIABLE MAPA
+		var mapa = new google.maps.Map( $("#mapa")[0], config );
+	});
+</script>
+</head>
+<body>
+	<div id="mapa">
+		<h2>Aquí anirà el mapa!</h2>
+	</div>
+	<div id="infor">
+		<h2>Aquí anirà l'informació</h2>
+	</div>
+</body>
+</html>
