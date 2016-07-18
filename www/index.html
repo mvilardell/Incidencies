@@ -82,7 +82,7 @@
 					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 				});
 				//UBICAR EL MARCADOR EN EL MAPA
-				marcador.setMap(mapa);
+				google.maps.event.addListener(marcador, 'click', function() {infowindow.open(mapa,marcador);});
 			});
 		}// Fin muestra mapa
 				
