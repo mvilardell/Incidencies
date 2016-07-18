@@ -44,14 +44,7 @@
 					 
 		//FUNCION DIBUJAR MAPa
 		function MuestraMapa(latlng) {
-			/*//Recuperar puntos
-			var capa = String(latlng);
-			var res = capa.replace(/\(|\)/g, '');//Quitar los parentesis
-			var latitud=  res.substring(0, res.indexOf(','));
-			var longitud=  res.substring(res.indexOf(",") + 2);
-			$('#LatY').val(latitud);
-			$('#LongX').val(longitud);*/
-			
+
 			var config = {
             zoom: 16,
             center: latlng,
@@ -59,20 +52,11 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP};
 						
 			var mapa = new google.maps.Map(document.getElementById("mapa"), config);
-						
-			/*var infowindow = new google.maps.InfoWindow({
-														position: latlng,
-														content: '<p>Tu posición actual</p>'+latlng
-													});
-						
-			var marker = new google.maps.Marker({
-												position: latlng,
-												map: map,
-												title: "Mi posición",
-												animation: google.maps.Animation.DROP
-											});
-			google.maps.event.addListener(marker, 'click', function() {infowindow.open(map,marker);});*/
-						 
+			
+			google.maps.event.addListener(mapa, "click", function(){
+				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
+				alert("click");
+			});
 		}// Fin muestra mapa
 				
 	});
