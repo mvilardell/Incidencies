@@ -57,10 +57,20 @@
 				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
 				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
 				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
-				alert(event.latLng);
+				//alert(event.latLng);
 				//COORDENADES
 				var coordenades = event.latLng.toString();
-				alert("Les coordenades son"+coordenades);
+				
+				//REMOURE PARENTESIS
+				coordenades = coordenades.replace("(","");
+				coordenades = coordenades.replace(")","");
+				//COORDENADES PER SEPARAT
+				var llista = coordenades.split(",");
+				
+				//MOSTRAR COORDENADES PER SEPARAT
+				alert("La coordenada x es"+llista[0]);
+				alert("La coordenada y es"+llista[1]);
+				
 			});
 		}// Fin muestra mapa
 				
