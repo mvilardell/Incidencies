@@ -76,6 +76,7 @@
 				
 				//VARIABLE PEL MARCADOR
 				var marcador = new google.maps.Marker({
+					titol: prompt("Afegeix titol al marcador"),
 					position: direccio, //POSICIO DEL NOU MARCADOR
 					//map: mapa //MAPA EN EL QUE S'UBICARÀ EL MARCADOR
 					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
@@ -84,7 +85,7 @@
 				//AGREGAR EVENT CLICK AL MARCADOR
 				google.maps.event.addListener(marcador, "click", function(){
 					//MOSTRAR UNA ALERTA AL FER CLICK
-					alert("click al marcador");
+					alert(marcador.titol);
 				});	
 				
 				//UBICAR EL MARCADOR EN EL MAPA
