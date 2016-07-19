@@ -11,13 +11,31 @@
 		width: 400px;
 		height: 400px;
 		float:left;
-		background: blue;
+
 	}
 </style>
+<!--ESTILS DE BOOTSTRAP -->
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
 <!-- Carregar GoogleMaps Api V3-->
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script>
+	//VARIABLES GENERALS
+	//ARRAY PER EMMAGATZEMAR NOUS MARCADORS
+	var marcadors_nous = [];
+	
+	//FUNCIO PER TREURE MARCADORS DEL MAPA
+	function treure_marcadors(llista)
+	{
+		//RECORRE L'ARRAY DE MARCADORS	
+		for(i in llista)
+		{
+			//TREURE MARCADOR DEL MAPA
+			llista[i].setMap(null);
+		}
+	}
 	$(document).on("ready", function(){
 		var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
 				
@@ -76,18 +94,24 @@
 				
 				//VARIABLE PEL MARCADOR
 				var marcador = new google.maps.Marker({
-					titol: prompt("Afegeix titol al marcador"),
 					position: direccio, //POSICIO DEL NOU MARCADOR
 					//map: mapa //MAPA EN EL QUE S'UBICARÀ EL MARCADOR
 					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 				});
+				
+				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
+				//GUARDAR EL MARCADOR A L'ARRAY
+				marcadors_nous.push(marcador);
+				
 				//AGREGAR EVENT CLICK AL MARCADOR
 				google.maps.event.addListener(marcador, "click", function(){
-					//MOSTRAR UNA ALERTA AL FER CLICK
-					alert(marcador.titol);
+					
 				});	
 				
+				//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
+				//I AIXÍ DEIXAR-NE NOMÉS UN
+				treure_marcadors(marcadors_nous);
 				//UBICAR EL MARCADOR EN EL MAPA
 				marcador.setMap(mapa);
 				
@@ -102,7 +126,63 @@
 		<h2>Aquí anirà el mapa!</h2>
 	</div>
 	<div id="infor">
-		<h2>Aquí anirà l'informació</h2>
+		<div class="accordion" id="accordion2">
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+						Agregar
+					</a>
+				</div>
+				<div id="collapseOne" class="accordion-body collapse in">
+					<div class="accordion-inner">
+						<form>
+							<table>
+								<tr>
+									<td>Titol</td>
+									<td><input type="text" class="form-control" name="titol" autocomplete="off"/></td>
+								</tr>
+								<tr>
+									<td>Coordenada X</td>
+									<td><input type="text" class="form-control" disabled="disabled" name="LongX" autocomplete="off"/></td>
+								</tr>
+								<tr>
+									<td>Coordenada Y</td>
+									<td><input type="text" class="form-control" disabled="disabled" name="LatY" autocomplete="off"/></td>
+								</tr>
+								<tr>
+									<td><button type="button" class="btn btn-success btn-sm">Guardar</button></td>
+									<td><button type="button" class="btn btn-danger btn-sm">Cancelar</button></td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+						Buscar
+					</a>
+				</div>
+				<div id="collapseTwo" class="accordion-body collapse in">
+					<div class="accordion-inner">
+						...
+					</div>
+				</div>
+			</div>
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+						Eliminar
+					</a>
+				</div>
+				<div id="collapseThree" class="accordion-body collapse in">
+					<div class="accordion-inner">
+						...
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
