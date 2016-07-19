@@ -81,11 +81,15 @@
 					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 				});
-				//UBICAR EL MARCADOR EN EL MAPA
+				//AGREGAR EVENT CLICK AL MARCADOR
 				google.maps.event.addListener(marcador, "click", function(){
 					//MOSTRAR UNA ALERTA AL FER CLICK
 					alert("click al marcador");
-				});
+				});	
+				
+				//UBICAR EL MARCADOR EN EL MAPA
+				marcador.setMap(mapa);
+				
 			});
 		}// Fin muestra mapa
 				
