@@ -107,8 +107,10 @@
 				//PASSAR LES COORDENADES AL FORMULARI
 				formulari.find("input[name='LongX']").val(llista[0]);
 				formulari.find("input[name='LatY']").val(llista[1]);
+				formulari.find("input[name='Descripcion']").val();
 				//UBICAR EL FOCUS AL CAMP TITOL
 				formulari.find("input[name='Nombre']").focus();
+				
 				
 				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 				//GUARDAR EL MARCADOR A L'ARRAY
@@ -170,6 +172,10 @@
 								<tr>
 									<td>Titol</td>
 									<td><input type="text" class="form-control" name="Nombre" autocomplete="off"/></td>
+								</tr>
+								<tr>
+									<td>Descripcio</td>
+									<td><input type="text" class="form-control" name="Descripcion" autocomplete="off"/></td>
 								</tr>
 								<tr>
 									<td>Coordenada X</td>
