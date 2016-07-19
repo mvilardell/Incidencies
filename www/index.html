@@ -128,7 +128,24 @@
 			});
 		}// Fin muestra mapa
 		$("#btn_grabar").on("click", function(){
-			alert("Grabar");
+			//INSTANCIAR EL FORMULARI
+			var f = $("#formulari");
+			
+			$.ajax({
+				type:"POST",
+				url:"http://www.grupllobet.com/apptest/MapsApi/iajax.php",
+				dataType:"JSON",
+				data:f.serialize()+"&tipo=grabar",
+				success:function(data){
+					alert(data.mensaje);
+				},
+				beforeSend:function(){
+				
+				},
+				complete:function(){
+				
+				}
+			});
 			return false;
 		});		
 	});
@@ -156,11 +173,11 @@
 								</tr>
 								<tr>
 									<td>Coordenada X</td>
-									<td><input type="text" class="form-control" disabled="disabled" name="LongX" autocomplete="off"/></td>
+									<td><input type="text" class="form-control" readonly name="LongX" autocomplete="off"/></td>
 								</tr>
 								<tr>
 									<td>Coordenada Y</td>
-									<td><input type="text" class="form-control" disabled="disabled" name="LatY" autocomplete="off"/></td>
+									<td><input type="text" class="form-control" readonly name="LatY" autocomplete="off"/></td>
 								</tr>
 								<tr>
 									<td><button type="button" id="btn_grabar" class="btn btn-success btn-sm">Guardar</button></td>
