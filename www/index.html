@@ -36,7 +36,11 @@
 			llista[i].setMap(null);
 		}
 	}
+	
 	$(document).on("ready", function(){
+		
+		var formulari = $("#formulari");
+	
 		var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
 				
 		if (navigator.geolocation) {
@@ -100,6 +104,11 @@
 					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 				});
 				
+				//PASSAR LES COORDENADES AL FORMULARI
+				formulari.find("input[name='LongX']").val(llista[0]);
+				formulari.find("input[name='LatY']").val(llista[1]);
+				
+				
 				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 				//GUARDAR EL MARCADOR A L'ARRAY
 				marcadors_nous.push(marcador);
@@ -135,7 +144,7 @@
 				</div>
 				<div id="collapseOne" class="accordion-body collapse in">
 					<div class="accordion-inner">
-						<form>
+						<form id="formulari">
 							<table>
 								<tr>
 									<td>Titol</td>
