@@ -107,7 +107,8 @@
 				//PASSAR LES COORDENADES AL FORMULARI
 				formulari.find("input[name='LongX']").val(llista[0]);
 				formulari.find("input[name='LatY']").val(llista[1]);
-				
+				//UBICAR EL FOCUS AL CAMP TITOL
+				formulari.find("input[name='Nombre']").focus();
 				
 				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 				//GUARDAR EL MARCADOR A L'ARRAY
@@ -126,7 +127,10 @@
 				
 			});
 		}// Fin muestra mapa
-				
+		$("#btn_grabar").on("click", function(){
+			alert("Grabar");
+			return false;
+		});		
 	});
 </script>
 </head>
@@ -148,7 +152,7 @@
 							<table>
 								<tr>
 									<td>Titol</td>
-									<td><input type="text" class="form-control" name="titol" autocomplete="off"/></td>
+									<td><input type="text" class="form-control" name="Nombre" autocomplete="off"/></td>
 								</tr>
 								<tr>
 									<td>Coordenada X</td>
@@ -159,7 +163,7 @@
 									<td><input type="text" class="form-control" disabled="disabled" name="LatY" autocomplete="off"/></td>
 								</tr>
 								<tr>
-									<td><button type="button" class="btn btn-success btn-sm">Guardar</button></td>
+									<td><button type="button" id="btn_grabar" class="btn btn-success btn-sm">Guardar</button></td>
 									<td><button type="button" class="btn btn-danger btn-sm">Cancelar</button></td>
 								</tr>
 							</table>
