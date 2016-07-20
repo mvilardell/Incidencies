@@ -94,11 +94,11 @@
 				//alert("La coordenada Y es "+llista[1]);
 				
 				//VARIABLE PER DIRECCIÓ, PUNT O COORDENADA
-				var direccio = new google.maps.LatLng(pos.coords.longitude, pos.coords.latitude);
+				
 				
 				//VARIABLE PEL MARCADOR
 				var marcador = new google.maps.Marker({
-					position: direccio, //POSICIO DEL NOU MARCADOR
+					position: latlng, //POSICIO DEL NOU MARCADOR
 					//map: mapa //MAPA EN EL QUE S'UBICARÀ EL MARCADOR
 					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
@@ -123,7 +123,7 @@
 				
 				//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
 				//I AIXÍ DEIXAR-NE NOMÉS UN
-				treure_marcadors(marcadors_nous);
+				//treure_marcadors(marcadors_nous);
 				//UBICAR EL MARCADOR EN EL MAPA
 				marcador.setMap(mapa);
 				
