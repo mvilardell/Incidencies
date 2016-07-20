@@ -93,8 +93,6 @@
 				//alert("La coordenada X es "+llista[0]);
 				//alert("La coordenada Y es "+llista[1]);
 				
-				//VARIABLE PER DIRECCIÓ, PUNT O COORDENADA
-				
 				
 				//VARIABLE PEL MARCADOR
 				var marcador = new google.maps.Marker({
@@ -154,7 +152,46 @@
 			alert(data+"Reporte enviado");
 					
 			$.mobile.changePage( window.location.href='index.html');
-		}		
+		}
+
+		$("#buscardades").click(function() {
+			
+			$.ajax({type: "POST", 
+				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
+                data: data,
+                cache: false,
+                dataType: "text",
+                success: Buscar
+            });
+				
+		});
+		
+		function Buscar(data){
+			$.each(data, function(i, item){
+				//TREURE MARCADORS ANTERIORS AVANS DE LLISTAR
+				treure_marcadors(marcadors_bd);
+				
+				//OBTENIR LES COORDENADES DEL PUNT
+				var posi = new google.maps.LatLng(item.LongX, item.LatY);
+				//CARGAR LES PROPIETATS AL MARCADOR
+				var marca = new google.maps.Marker({
+					idMarcador: item.ID,
+					position:posi,
+					title: item.Nombre
+				});
+				var infowindow = new google.maps.InfoWindow({
+                    content: marca.ID +' '+marca.Nombre
+				});
+				//AGREGAR EVENT CLICK AL MARCADOR
+				google.maps.event.addListener(marca, 'click', function() {infowindow.open(map,marca);});
+				
+				//AGREGAR EL MARCADOR A LA VARIABLE DE MARCADORS_BD
+				marcadors_bd.push(marca);
+				
+				//UBICAR EL MARCADOR AL MAPA
+				marca.setMap(mapa);
+			});
+		}
 	});
 </script>
 </head>
@@ -209,7 +246,7 @@
 				</div>
 				<div id="collapseTwo" class="accordion-body collapse in">
 					<div class="accordion-inner">
-						<button type="button" data-theme="a" id="buscardades">Enviar</button>
+						<button type="button" data-theme="a" id="buscardades">Buscar</button>
 					</div>
 				</div>
 			</div>
