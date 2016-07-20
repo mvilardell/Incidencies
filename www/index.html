@@ -153,31 +153,34 @@
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
-		$("#guardardatos").click(listar());
+		$("#buscardades").click(function() {
+			$.ajax({type: "POST", 
+				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
+				dataType: "text",
+				data:"&tipo=listar",
+				success:function(data){
+					if(data.estado == "ok")
+					{
+						alert("Hi ha dades");
+					}
+				else
+					{
+						alert("No hi ha dades");
+					}
+				},
+				beforeSend:function(){
+				
+				},
+				complete:function(){
+				
+				}
+			});
+				
+		});
 	});
 	function listar() 
 	{			
-		$.ajax({type: "POST", 
-			url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
-            dataType: "text",
-			data:"&tipo=listar",
-            success:function(data){
-				if(data.estado == "ok")
-				{
-					alert("Hi ha dades");
-				}
-			else
-				{
-					alert("No hi ha dades");
-				}
-			},
-			beforeSend:function(){
-			
-			},
-			complete:function(){
-			
-			}
-        });
+		
 				
 	});
 </script>
