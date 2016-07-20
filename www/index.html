@@ -25,7 +25,7 @@
 	//VARIABLES GENERALS
 	//ARRAY PER EMMAGATZEMAR NOUS MARCADORS
 	var marcadors_nous = [];
-	
+	var marcadors_bd = [];
 	//FUNCIO PER TREURE MARCADORS DEL MAPA
 	function treure_marcadors(llista)
 	{
@@ -105,8 +105,8 @@
 				});
 				
 				//PASSAR LES COORDENADES AL FORMULARI
-				formulari.find("input[name='LongX']").val(llista[0]);
-				formulari.find("input[name='LatY']").val(llista[1]);
+				formulari.find("input[name='LongX']").val(llista[1]);
+				formulari.find("input[name='LatY']").val(llista[0]);
 				formulari.find("input[name='Descripcion']").val();
 				//UBICAR EL FOCUS AL CAMP TITOL
 				formulari.find("input[name='Nombre']").focus();
@@ -162,12 +162,13 @@
 	<div id="mapa">
 		<h2>Aquí anirà el mapa!</h2>
 	</div>
+	</br></br></br>
 	<div id="infor">
 		<div class="accordion" id="accordion2">
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-						Agregar
+						<h3>Agregar</h3>
 					</a>
 				</div>
 				<div id="collapseOne" class="accordion-body collapse in">
@@ -199,22 +200,24 @@
 					</div>
 				</div>
 			</div>
+			</br></br></br>
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-						Buscar
+						<h3>Buscar</h3>
 					</a>
 				</div>
 				<div id="collapseTwo" class="accordion-body collapse in">
 					<div class="accordion-inner">
-						...
+						<button type="button" data-theme="a" id="buscardades">Enviar</button>
 					</div>
 				</div>
 			</div>
+			</br></br></br>
 			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-						Eliminar
+						<h3>Eliminar</h3>
 					</a>
 				</div>
 				<div id="collapseThree" class="accordion-body collapse in">
