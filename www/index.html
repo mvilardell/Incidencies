@@ -150,9 +150,9 @@
 		$("#buscardades").click(function() {
 			
 			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
-                cache: false,
+				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
                 dataType: "text",
+				data:"&tipo=listar",
                 success: Buscar
             });
 				
@@ -167,7 +167,7 @@
 		
 		
 		function Buscar(data){
-			$.each(data, function(i, item){
+			$.each(data.mensaje, function(i, item){
 				//TREURE MARCADORS ANTERIORS AVANS DE LLISTAR
 				treure_marcadors(marcadors_bd);
 				
