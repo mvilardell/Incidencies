@@ -158,13 +158,14 @@
 				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
 				dataType: "text",
 				success:function(data){
-					if(data.estado == "ok")
+					if(data.estado = "ok")
 					{
 						alert("Hi ha dades");
 					}
 				else
 					{
 						alert("No hi ha dades");
+						alert(data.estado);
 					}
 				},
 				beforeSend:function(){
