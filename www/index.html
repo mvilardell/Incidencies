@@ -157,12 +157,12 @@
 		$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
-				dataType: "text",
+				dataType: "json",
 				success:function(data){
 					if(data != null)
 					{
 						alert("Hi ha dades");
-						alert(data.find("input[name='Nombre']"));
+						alert(data.Nombre));
 						/*$.each(data.mensaje, function(i, item){
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(item.LongX, item.LatY);
