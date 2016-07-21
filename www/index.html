@@ -26,6 +26,7 @@
 	//ARRAY PER EMMAGATZEMAR NOUS MARCADORS
 	var marcadors_nous = [];
 	var marcadors_bd = [];
+	var mapa = null;
 	//FUNCIO PER TREURE MARCADORS DEL MAPA
 	function treure_marcadors(llista)
 	{
@@ -73,7 +74,7 @@
 			disableDefaultUI: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP};
 						
-			var mapa = new google.maps.Map(document.getElementById("mapa"), config);
+			mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
 			google.maps.event.addListener(mapa, "click", function(event){
 				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
@@ -153,15 +154,18 @@
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
-		$("#buscardades").click(function() {
+		llistar();
+	});
+	$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
 				dataType: "text",
 				success:function(data){
 					if(data.estado = "ok")
 					{
-						//alert("Hi ha dades");
-						$.each(data.mensaje, function(i, item){
+						alert("Hi ha dades");
+						alert("data.mensaje");
+						/*$.each(data.mensaje, function(i, item){
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(item.LongX, item.LatY);
 							//CARREGAR LES PROPIETATS AL MARCADOR
@@ -178,7 +182,7 @@
 							marcadors_bd.push(marca);
 							//UBICAR EL MARCADOR AL MAPA
 							marca.setMap(mapa);
-						});
+						});*/
 					}
 				else
 					{
@@ -194,7 +198,6 @@
 			});
 				
 		});
-	});
 
 </script>
 </head>
