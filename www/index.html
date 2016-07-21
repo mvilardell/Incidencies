@@ -157,9 +157,9 @@
 		$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
-				dataType: "json",
+				dataType: "text",
 				success:function(data){
-					if(data != null)
+					if(data.estado = "ok")
 					{
 						alert("Hi ha dades");
 						alert(data);
