@@ -154,14 +154,17 @@
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
+		
 		$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
-				dataType: "JSON",
+				dataType: "text",
 				success:function(data){
 					if(data.estado = "ok")
 					{
-						//alert("Hi ha dades");
+						alert("Hi ha dades");
+						alert(data);
+						alert(data:Nombre);
 						alert(data.mensaje);
 						/*$.each(data.mensaje, function(i, item){
 							//OBTENIR LES COORDENADES DEL PUNT
