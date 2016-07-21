@@ -154,50 +154,50 @@
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
-
+		$("#buscardades").click(llistar());
 	});
-	$("#buscardades").click(function llistar() {
-			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
-				dataType: "text",
-				success:function(data){
-					if(data.estado = "ok")
-					{
-						alert("Hi ha dades");
-						alert("data.mensaje");
-						/*$.each(data.mensaje, function(i, item){
-							//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(item.LongX, item.LatY);
-							//CARREGAR LES PROPIETATS AL MARCADOR
-							var marca = new google.maps.Marker({
-								idMarcador:item.ID,
-								position:posi,
-								titol: item.Nombre
-							});
-							//AGREGAR EVENT CLICK AL MARCADOR
-							google.maps.event.addListener(marca, "click", function(){
-								alert("Has fet click a"+marca.idMarcador+" - "+marca.titol);
-							});
-							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-							marcadors_bd.push(marca);
-							//UBICAR EL MARCADOR AL MAPA
-							marca.setMap(mapa);
-						});*/
-					}
-				else
-					{
-						alert("No hi ha dades");
-					}
-				},
-				beforeSend:function(){
-				
-				},
-				complete:function(){
-				
+	function llistar() {
+		$.ajax({type: "POST", 
+			url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
+			dataType: "text",
+			success:function(data){
+				if(data.estado = "ok")
+				{
+					alert("Hi ha dades");
+					alert("data.mensaje");
+					/*$.each(data.mensaje, function(i, item){
+						//OBTENIR LES COORDENADES DEL PUNT
+						var posi = new google.maps.LatLng(item.LongX, item.LatY);
+						//CARREGAR LES PROPIETATS AL MARCADOR
+						var marca = new google.maps.Marker({
+							idMarcador:item.ID,
+							position:posi,
+							titol: item.Nombre
+						});
+						//AGREGAR EVENT CLICK AL MARCADOR
+						google.maps.event.addListener(marca, "click", function(){
+							alert("Has fet click a"+marca.idMarcador+" - "+marca.titol);
+						});
+						//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
+						marcadors_bd.push(marca);
+						//UBICAR EL MARCADOR AL MAPA
+						marca.setMap(mapa);
+					});*/
 				}
-			});
-				
+			else
+				{
+					alert("No hi ha dades");
+				}
+			},
+			beforeSend:function(){
+			
+			},
+			complete:function(){
+			
+			}
 		});
+			
+	}
 
 </script>
 </head>
