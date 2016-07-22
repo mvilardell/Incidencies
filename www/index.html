@@ -161,10 +161,11 @@
 				success:function(data){
 					if(data != null)
 					{
-						var dades = new Array(data);
+						var dades = new Array();
+						dades = data;
 						
 						alert("Hi ha dades");
-						alert(data);
+						alert(dades);
 						/*$.each(data.mensaje, function(i, item){
 							
 						//OBTENIR LES COORDENADES DEL PUNT
