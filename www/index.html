@@ -161,8 +161,9 @@
 				success:function(data){
 					if(data != null)
 					{
-						var dades = new Array();
-						dades = data;
+						var resultat = data;
+						var dades = new Array(resultat);
+						
 						
 						alert("Hi ha dades");
 						alert(dades[1]);
