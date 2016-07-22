@@ -161,7 +161,8 @@
 				success:function(data){
 					if(data != null)
 					{
-						var dades = new Array(data);
+						var dades = new Array();
+						dades = data;
 						alert("Hi ha dades");
 						alert(dades[2]);
 						/*$.each(data.mensaje, function(i, item){
