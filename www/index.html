@@ -162,9 +162,10 @@
 					if(data.estado = "ok")
 					{
 						alert("Hi ha dades");
-						alert(data.Nombre);
-						/*$.each(data.mensaje, function(i, item){
-							//OBTENIR LES COORDENADES DEL PUNT
+						
+						$.each(data.mensaje, function(i){//(i, item){
+							alert(data.Nombre[i]);
+						/*	//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(item.LongX, item.LatY);
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
@@ -179,8 +180,8 @@
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
 							//UBICAR EL MARCADOR AL MAPA
-							marca.setMap(mapa);
-						});*/
+							marca.setMap(mapa);*/
+						});
 					}
 				else
 					{
