@@ -162,8 +162,10 @@
 					if(data != null)
 					{
 						var dades = new Array(data);
+						dades = dades.replace("[","");
+						dades = dades.replace("]","");
 						alert("Hi ha dades");
-						alert(dades);
+						alert(dades[1]);
 						/*$.each(data.mensaje, function(i, item){
 							
 						//OBTENIR LES COORDENADES DEL PUNT
