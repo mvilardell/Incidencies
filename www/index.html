@@ -156,7 +156,7 @@
 		}
 		$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
+				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
 				dataType: "text",
 				success:function(data){
 					if(data != null)
@@ -165,7 +165,7 @@
 						
 						
 						alert("Hi ha dades");
-						alert(dades[0]);
+						alert(dades[1]);
 						/*$.each(data.mensaje, function(i, item){
 							
 						//OBTENIR LES COORDENADES DEL PUNT
