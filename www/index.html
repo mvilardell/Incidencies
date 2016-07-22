@@ -159,14 +159,14 @@
 				url: "http://www.grupllobet.com/apptest/MapsApi/referencia.php",
 				dataType: "text",
 				success:function(data){
-					if(data.estado = "ok")
+					if(data != null)
 					{
+						data = data.replace("\","");
 						alert("Hi ha dades");
 						alert(data);
-						
-					/*	$.each(data.mensaje, function(i, item){
+						/*$.each(data.mensaje, function(i, item){
 							
-							//OBTENIR LES COORDENADES DEL PUNT
+						//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(item.LongX, item.LatY);
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
