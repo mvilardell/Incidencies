@@ -156,18 +156,18 @@
 		}
 		$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
+				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
 				dataType: "text",
 				success:function(data){
 					if(data != null)
 					{
 						var dades = new Array(data);
-						alert("Hi ha dades");
-						alert(dades);
-						alert(dades[1]);
-						/*$.each(data.mensaje, function(i, item){
-							
-						//OBTENIR LES COORDENADES DEL PUNT
+						
+						//alert("Hi ha dades");
+						//alert(dades[2]);
+						$.each(data, function(i, item){
+							document.writeln(data); 
+						/*//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(item.LongX, item.LatY);
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
@@ -181,9 +181,10 @@
 							});
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
+							*/
 							//UBICAR EL MARCADOR AL MAPA
-							marca.setMap(mapa);
-						});*/
+							marker1.setMap(mapa);
+						});
 					}
 				else
 					{
