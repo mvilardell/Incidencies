@@ -125,7 +125,6 @@
 				//treure_marcadors(marcadors_nous);
 				//UBICAR EL MARCADOR EN EL MAPA
 				marcador.setMap(mapa);
-				//marker1.setMap(mapa);
 				
 			});
 		}// Fin muestra mapa
@@ -157,19 +156,35 @@
 		}
 		$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
+				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
 				dataType: "text",
 				success:function(data){
 					if(data != null)
 					{
-						//alert("Hi ha dades");
-						
-					
-						$('#page4').html(data);
-						document.getElementById("#page4");
-						alert(marker1); 
-						
-						
+						var dades = data.split(",");
+						alert(data);
+						alert("Hi ha dades");
+						alert(dades[2]);
+						/*$.each(data, function(i, item){
+							document.writeln(data); 
+						//OBTENIR LES COORDENADES DEL PUNT
+							var posi = new google.maps.LatLng(item.LongX, item.LatY);
+							//CARREGAR LES PROPIETATS AL MARCADOR
+							var marca = new google.maps.Marker({
+								idMarcador:item.ID,
+								position:posi,
+								titol: item.Nombre
+							});
+							//AGREGAR EVENT CLICK AL MARCADOR
+							google.maps.event.addListener(marca, "click", function(){
+								alert("Has fet click a"+marca.idMarcador+" - "+marca.titol);
+							});
+							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
+							marcadors_bd.push(marca);
+							
+							//UBICAR EL MARCADOR AL MAPA
+							marker1.setMap(mapa);
+						});*/
 					}
 				else
 					{
@@ -241,8 +256,6 @@
 				<div id="collapseTwo" class="accordion-body collapse in">
 					<div class="accordion-inner">
 						<button type="button" data-theme="a" id="buscardades">Buscar</button>
-					</div>
-					<div  id='page4' style="background-color:white">
 					</div>
 				</div>
 			</div>
