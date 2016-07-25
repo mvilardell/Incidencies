@@ -167,24 +167,9 @@
 						//alert(dades[2]);
 						$.each(data, function(i, item){
 							document.writeln(data); 
-						/*//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(item.LongX, item.LatY);
-							//CARREGAR LES PROPIETATS AL MARCADOR
-							var marca = new google.maps.Marker({
-								idMarcador:item.ID,
-								position:posi,
-								titol: item.Nombre
-							});
-							//AGREGAR EVENT CLICK AL MARCADOR
-							google.maps.event.addListener(marca, "click", function(){
-								alert("Has fet click a"+marca.idMarcador+" - "+marca.titol);
-							});
-							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-							marcadors_bd.push(marca);
-							*/
-							//UBICAR EL MARCADOR AL MAPA
-							marker1.setMap(mapa);
+						
 						});
+						alert(marker1);
 					}
 				else
 					{
