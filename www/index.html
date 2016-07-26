@@ -166,8 +166,9 @@
 						//alert("Hi ha dades");
 						//alert(dades[2]);
 						var i = 0;
-						var y = 1;
-						var x = 2;
+						var n = 1;
+						var y = 2;
+						var x = 3;
 						var text1 ='';
 						var text2 ='';
 						var text3 ='';
@@ -175,13 +176,24 @@
 							text1 = dades[i];
 							text2 = dades[y];
 							text3 = dades[x];
-							i=i+3;
-							y=y+3;
-							x=x+3;
+							i=i+4;
+							n=n+4
+							y=y+4;
+							x=x+4;
 							
 							alert(text1);
 							alert(text2);
 							alert(text3);
+						
+						//OBTENIR LES COORDENADES DEL PUNT
+							var posi = new google.maps.LatLng(dades[x], dades[y]);
+							//CARREGAR LES PROPIETATS AL MARCADOR
+							var marca = new google.maps.Marker({
+								idMarcador:dades[i],
+								position:posi,
+								titol: dades[n]
+							});
+							alert(marca);
 						}
 						/*$.each(data, function(i, item){
 						
