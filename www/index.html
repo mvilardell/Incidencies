@@ -76,13 +76,14 @@
 						
 			mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
-			google.maps.event.addListener(mapa, "click", function(event){
+			//google.maps.event.addListener(mapa, "click", function(event){
+			
 				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
 				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
 				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
 				//alert(event.latLng);
 				//COORDENADES
-				var coordenades = event.latLng.toString();
+				var coordenades = String(latlng);//event.latLng.toString();
 				
 				//REMOURE PARENTESIS
 				coordenades = coordenades.replace("(","");
@@ -126,7 +127,7 @@
 				//UBICAR EL MARCADOR EN EL MAPA
 				marcador.setMap(mapa);
 				
-			});
+			//});
 		}// Fin muestra mapa
 		$("#guardardatos").click(function() {
 			var fNombre = $("#Nombre").val();
