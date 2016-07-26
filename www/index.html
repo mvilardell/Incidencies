@@ -187,7 +187,7 @@
 							//alert(text3);
 						
 						//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(dades[x], dades[y]);
+							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
 								idMarcador:dades[i],
@@ -197,7 +197,7 @@
 							
 							//AGREGAR EVENT CLICK AL MARCADOR
 							google.maps.event.addListener(marca, "click", function(){
-								alert("Has fet click a"+marca.idMarcador+" - "+marca.titol);
+								alert("Has fet click a"+marca(idMarcador)+" - "+marca(titol));
 							});
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
