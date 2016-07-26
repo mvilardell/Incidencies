@@ -181,9 +181,9 @@
 							y=y+4;
 							x=x+4;
 							
-							alert(text1);
-							alert(text2);
-							alert(text3);
+							//alert(text1);
+							//alert(text2);
+							//alert(text3);
 						
 						//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[x], dades[y]);
@@ -193,7 +193,16 @@
 								position:posi,
 								titol: dades[n]
 							});
-							alert(marca);
+							
+							//AGREGAR EVENT CLICK AL MARCADOR
+							google.maps.event.addListener(marca, "click", function(){
+								alert("Has fet click a"+marca.idMarcador+" - "+marca.titol);
+							});
+							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
+							marcadors_bd.push(marca);
+							
+							//UBICAR EL MARCADOR AL MAPA
+							marca.setMap(mapa);
 						}
 						/*$.each(data, function(i, item){
 						
