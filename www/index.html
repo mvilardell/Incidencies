@@ -170,7 +170,7 @@
 						var n = 1;
 						var y = 2;
 						var x = 3;
-						var contador = 0;
+						var contador = 1;
 						//var text1 ='';
 						//var text2 ='';
 						//var text3 ='';
@@ -203,21 +203,21 @@
 							//UBICAR EL MARCADOR AL MAPA
 							marca.setMap(mapa);
 							
-							if(contador = 0){
-								var posi = new google.maps.LatLng(41.82830331938253, 1.8853352830108339);
+							if(contador != 0){
+								var posi2 = new google.maps.LatLng(41.82830331938253, 1.8853352830108339);
 							//CARREGAR LES PROPIETATS AL MARCADOR
 								var marca2 = new google.maps.Marker({
-									position:posi,
+									position:posi2,
 									titol: "posicio especial"
 								});
 								google.maps.event.addListener(marca2, "click", function(){
 									alert("Has fet click a  - " +marca2.titol );
 								});
-								marca2.setMap(mapa);
-								contador++;
+								
+								contador = 0;
 							
 							}
-						
+							marca2.setMap(mapa);
 							i=i+4;
 							n=n+4
 							y=y+4;
