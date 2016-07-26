@@ -210,13 +210,14 @@
 									position:posi2,
 									titol: "posicio especial"
 								});
-								google.maps.event.addListener(marca2, "click", function(){
-									alert("Has fet click a  - " +marca2.titol );
-								});
+								
 								
 								contador = 0;
 							
 							}
+							google.maps.event.addListener(marca2, "click", function(){
+									alert("Has fet click a  - " +marca2.titol );
+							});
 							marca2.setMap(mapa);
 							i=i+4;
 							n=n+4
