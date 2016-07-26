@@ -187,21 +187,21 @@
 						//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							//CARREGAR LES PROPIETATS AL MARCADOR
-							var marca = new google.maps.Marker({
+							var marca<%=i%> = new google.maps.Marker({
 								idMarcador:dades[i],
 								position:posi,
 								titol: dades[n]
 							});
 							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
 							//AGREGAR EVENT CLICK AL MARCADOR
-							google.maps.event.addListener(marca, "click", function(){
-								alert("Has fet click a "+marca.idMarcador+" - " +marca.titol );
+							google.maps.event.addListener(marca<%=i%>, "click", function(){
+								alert("Has fet click a "+marca<%=i%>.idMarcador+" - " +marca<%=i%>.titol );
 							});
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
 							
 							//UBICAR EL MARCADOR AL MAPA
-							marca.setMap(mapa);
+							marca<%=i%>.setMap(mapa);
 							
 							if(contador != 0){
 								var posi2 = new google.maps.LatLng(41.82830331938253, 1.8853352830108339);
