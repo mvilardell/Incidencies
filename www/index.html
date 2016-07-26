@@ -201,7 +201,7 @@
 							marcadors_bd.push(marca);
 							
 							//UBICAR EL MARCADOR AL MAPA
-							marcadors_bd.setMap(mapa);
+							marca.setMap(mapa);
 							
 							if(contador != 0){
 								var posi2 = new google.maps.LatLng(41.82830331938253, 1.8853352830108339);
@@ -225,6 +225,9 @@
 							y=y+4;
 							x=x+4;
 						}
+						google.maps.event.addListener(marca, "click", function(){
+							alert("Has fet click a "+marca.idMarcador+" - " +marca.titol );
+						});
 						/*$.each(data, function(i, item){
 						
 						//OBTENIR LES COORDENADES DEL PUNT
