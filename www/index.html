@@ -183,26 +183,30 @@
 							alert(text1);
 							alert(text2);
 							alert(text3);*/
-							var marca =[];
+							
 						
 						//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
+							
+							var infowindow = new google.maps.InfoWindow({
+								position: posi,
+								content: '<p>marcador amb ID</p>'+dades[i]
+							});
+							
 							//CARREGAR LES PROPIETATS AL MARCADOR
-							marca[i] = new google.maps.Marker({
+							var marca = new google.maps.Marker({
 								idMarcador:dades[i],
 								position:posi,
 								titol: dades[n]
 							});
 							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
 							//AGREGAR EVENT CLICK AL MARCADOR
-							google.maps.event.addListener(marca[i], "click", function(){
-								alert("Has fet click a "+marca[i].idMarcador+" - " +marca[i].titol );
-							});
+							google.maps.event.addListener(marca, 'click', function() {infowindow.open(mapa,marca);});
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-							marcadors_bd.push(marca[i]);
+							marcadors_bd.push(marca);
 							
 							//UBICAR EL MARCADOR AL MAPA
-							marca[i].setMap(mapa);
+							marca.setMap(mapa);
 							
 							if(contador != 0){
 								var posi2 = new google.maps.LatLng(41.82830331938253, 1.8853352830108339);
