@@ -175,9 +175,9 @@
 						//var text2 ='';
 						//var text3 ='';
 						for (;dades[i];) {
-							//text1 = dades[i];
-							//text2 = dades[y];
-							//text3 = dades[x];
+							text1 = dades[i];
+							text2 = dades[y];
+							text3 = dades[x];
 						
 							
 							//alert(text1);
@@ -187,15 +187,20 @@
 						//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							//CARREGAR LES PROPIETATS AL MARCADOR
+							/*
 							var marca = new google.maps.Marker({
 								idMarcador:dades[i],
 								position:posi,
 								titol: dades[n]
-							});
-							alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
+							});*/
+							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
 							//AGREGAR EVENT CLICK AL MARCADOR
-							google.maps.event.addListener(marca, "click", function(){
-								alert("Has fet click a "+marca.idMarcador+" - " +marca.titol );
+							google.maps.event.addListener(new google.maps.Marker({
+								idMarcador:dades[i],
+								position:posi,
+								titol: dades[n]
+							}), "click", function(){
+								alert("Has fet click a "+dades[i]+" - "+ dades[n] );
 							});
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
@@ -213,12 +218,13 @@
 								
 								
 								contador = 0;
+								google.maps.event.addListener(marca2, "click", function(){
+									alert("Has fet click al marcador espercial  - " +marca2.titol );
+								});
+								marca2.setMap(mapa);
 							
 							}
-							google.maps.event.addListener(marca2, "click", function(){
-									alert("Has fet click a  - " +marca2.titol );
-							});
-							marca2.setMap(mapa);
+							
 							i=i+4;
 							n=n+4
 							y=y+4;
