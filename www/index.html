@@ -128,9 +128,11 @@
 				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
 				dataType: "text",
 				success:function(data){
+					alert(data);
 				
-				var marca = data.innerHTML;
-				document.getElementById("marques").innerHTML = marca;
+					//$('#marquesx').html(data);
+					//var marca = data.innerHTML;
+					//document.getElementById("marquesx").innerHTML = data;
 				
 				}
 			});
@@ -161,10 +163,10 @@
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
-		$("#buscardades").click(
+		/*$("#buscardades").click(
 		
 			marques();		
-		);
+		);*/
 		/*$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
@@ -281,7 +283,9 @@
 				<div id="collapseTwo" class="accordion-body collapse in">
 					<div class="accordion-inner">
 						<button type="button" data-theme="a" id="buscardades">Buscar</button>
-						<div id="marques"></div>
+						<div id="marquesx">
+							
+						</div>
 					</div>
 				</div>
 			</div>
