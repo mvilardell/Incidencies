@@ -158,16 +158,17 @@
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
 				dataType: "text",
-				success:function(data){
-					alert(data);
+				success: Buscar			
+			})
+		});
+		function Buscar(data){
+					//alert(data);
 				
 					//$('#marquesx').html(data);
 					//var marca = data.innerHTML;
-					//document.getElementById("marquesx").innerHTML = data;
+					document.getElementById("marquesx").innerHTML = data;
 				
-				}
-			});
-		});
+		}
 		/*$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
@@ -305,5 +306,6 @@
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>
