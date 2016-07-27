@@ -123,6 +123,18 @@
 				
 			//});
 		}// Fin muestra mapa
+		function llistar() {
+			$.ajax({type: "POST", 
+				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
+				dataType: "text",
+				success:function(data){
+				
+				var marca = data.innerHTML;
+				document.getElementById("marques").innerHTML = marca;
+				
+				}
+			});
+		}
 		$("#guardardatos").click(function() {
 			var fNombre = $("#Nombre").val();
    			var fDescripcion = $("#Descripcion").val();
@@ -149,25 +161,27 @@
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
-		$("#buscardades").click(function llistar() {
+		$("#buscardades").click(
+		
+			marques();		
+		);
+		/*$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
+				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
 				dataType: "text",
 				success:function(data){
 					if(data != null)
 					{
-						var dades = data.split("/");
+						var dades = data.split(",");
 
 						var i = 0;
-						/*var n = 1;
+						var n = 1;
 						var y = 2;
-						var x = 3;*/
+						var x = 3;
 
 						for (;dades[i];) {
 							
-							dades[i].setMap(mapa);
-							i++;
-							/*//OBTENIR LES COORDENADES DEL PUNT
+							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							
 							var infowindow = new google.maps.InfoWindow({
@@ -193,7 +207,7 @@
 							i=i+4;
 							n=n+4
 							y=y+4;
-							x=x+4;*/
+							x=x+4;
 						}
 
 					}
@@ -210,7 +224,7 @@
 				}
 			});
 				
-		});
+		});*/
 	});
 
 </script>
@@ -267,6 +281,7 @@
 				<div id="collapseTwo" class="accordion-body collapse in">
 					<div class="accordion-inner">
 						<button type="button" data-theme="a" id="buscardades">Buscar</button>
+						<div id="marques"></div>
 					</div>
 				</div>
 			</div>
