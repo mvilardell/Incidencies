@@ -123,20 +123,7 @@
 				
 			//});
 		}// Fin muestra mapa
-		function llistar() {
-			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
-				dataType: "text",
-				success:function(data){
-					alert(data);
-				
-					//$('#marquesx').html(data);
-					//var marca = data.innerHTML;
-					//document.getElementById("marquesx").innerHTML = data;
-				
-				}
-			});
-		}
+		
 		$("#guardardatos").click(function() {
 			var fNombre = $("#Nombre").val();
    			var fDescripcion = $("#Descripcion").val();
@@ -167,6 +154,20 @@
 		
 			marques();		
 		);*/
+		$("#buscardades").click(function llistar() {
+			$.ajax({type: "POST", 
+				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
+				dataType: "text",
+				success:function(data){
+					alert(data);
+				
+					//$('#marquesx').html(data);
+					//var marca = data.innerHTML;
+					//document.getElementById("marquesx").innerHTML = data;
+				
+				}
+			});
+		});
 		/*$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
