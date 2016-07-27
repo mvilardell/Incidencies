@@ -188,13 +188,16 @@
 							llistat[contador] = marca;
 							
 							//UBICAR EL MARCADOR AL MAPA
-							llistat[contador].setMap(mapa);
+							//llistat[contador].setMap(mapa);
 							
 							i=i+4;
 							n=n+4
 							y=y+4;
 							x=x+4;
 							contador++;
+						}
+						for (;llistat[c];) {
+							llistat[contador].setMap(mapa);
 						}
 
 					}
