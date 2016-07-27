@@ -177,12 +177,15 @@
 				success:function(data){
 					if(data != null)
 					{
-						var dades = data.split(",");
+						var dades = data.split("#");
 
 						var i = 0;
 						var n = 1;
-						var y = 2;
-						var x = 3;
+						var d = 2;
+						var y = 3;
+						var x = 4;
+						var f = 5;
+						var h = 6;
 
 						for (;dades[i];) {
 							
@@ -204,20 +207,22 @@
 							
 							var infowindow = new google.maps.InfoWindow({
 								position: posi,
-								content: '<p>marcador amb ID</p>'+dades[i]
+								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
 							});
-							
-							//AGREGAR EVENT CLICK AL MARCADOR
-							google.maps.event.addListener(marca, 'click', function() {infowindow.open(mapa,marca);});
+						
 							infowindow.open(mapa,marca);
 							
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
 							
-							i=i+4;
-							n=n+4
-							y=y+4;
-							x=x+4;
+							i=i+7;
+							n=n+7;
+							d=d+7;
+							y=y+7;
+							x=x+7;
+							f=f+7;
+							h=h+7;
+						
 						}
 
 					}
