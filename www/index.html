@@ -2,11 +2,22 @@
 <head>
 <style>
 	#mapa{
-		width: 400px;
-		height: 400px;
-		float:left;
-		background: green;
+		height:100%;
+		width:100%;
+		padding:0;
+		position:absolute !important;
+		top:40px;
+		righ:0px;
+		bottom:0px !important;
+		left:0px !important;
 	}
+	.posicionBoton{
+		margin:auto;
+		bottom:0px;
+		left:0px;
+		position:absolute
+	}
+	
 	#infor{
 		width: 400px;
 		height: 400px;
@@ -76,52 +87,52 @@
 						
 			mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
-			//google.maps.event.addListener(mapa, "click", function(event){
 			
-				//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
-				//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
-				//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
-				//alert(event.latLng);
-				//COORDENADES
-				var coordenades = String(latlng);//event.latLng.toString();
+			
+			//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
+			//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
+			//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
+			//alert(event.latLng);
+			//COORDENADES
+			var coordenades = String(latlng);//event.latLng.toString();
+			
+			//REMOURE PARENTESIS
+			coordenades = coordenades.replace("(","");
+			coordenades = coordenades.replace(")","");
+			//COORDENADES PER SEPARAT
+			var llista = coordenades.split(",");
+			
+			//VARIABLE PEL MARCADOR
+			var marcador = new google.maps.Marker({
+				position: latlng, //POSICIO DEL NOU MARCADOR
+				animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+				draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
+			});
+			
+			//PASSAR LES COORDENADES AL FORMULARI
+			formulari.find("input[name='LongX']").val(llista[1]);
+			formulari.find("input[name='LatY']").val(llista[0]);
+			formulari.find("input[name='Descripcion']").val();
+			//UBICAR EL FOCUS AL CAMP TITOL
+			formulari.find("input[name='Nombre']").focus();
+			
+			
+			//DEIXAR NOMÉS 1 MARCADOR AL MAPA
+			//GUARDAR EL MARCADOR A L'ARRAY
+			marcadors_nous.push(marcador);
+			
+			//AGREGAR EVENT CLICK AL MARCADOR
+			google.maps.event.addListener(marcador, "click", function(){
 				
-				//REMOURE PARENTESIS
-				coordenades = coordenades.replace("(","");
-				coordenades = coordenades.replace(")","");
-				//COORDENADES PER SEPARAT
-				var llista = coordenades.split(",");
+			});	
+			
+			//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
+			//I AIXÍ DEIXAR-NE NOMÉS UN
+			//treure_marcadors(marcadors_nous);
+			//UBICAR EL MARCADOR EN EL MAPA
+			marcador.setMap(mapa);
 				
-				//VARIABLE PEL MARCADOR
-				var marcador = new google.maps.Marker({
-					position: latlng, //POSICIO DEL NOU MARCADOR
-					animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
-					draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
-				});
-				
-				//PASSAR LES COORDENADES AL FORMULARI
-				formulari.find("input[name='LongX']").val(llista[1]);
-				formulari.find("input[name='LatY']").val(llista[0]);
-				formulari.find("input[name='Descripcion']").val();
-				//UBICAR EL FOCUS AL CAMP TITOL
-				formulari.find("input[name='Nombre']").focus();
-				
-				
-				//DEIXAR NOMÉS 1 MARCADOR AL MAPA
-				//GUARDAR EL MARCADOR A L'ARRAY
-				marcadors_nous.push(marcador);
-				
-				//AGREGAR EVENT CLICK AL MARCADOR
-				google.maps.event.addListener(marcador, "click", function(){
-					
-				});	
-				
-				//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
-				//I AIXÍ DEIXAR-NE NOMÉS UN
-				//treure_marcadors(marcadors_nous);
-				//UBICAR EL MARCADOR EN EL MAPA
-				marcador.setMap(mapa);
-				
-			//});
+			
 		}// Fin muestra mapa
 		
 		$("#guardardatos").click(function() {
@@ -150,26 +161,7 @@
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
-		/*$("#buscardades").click(
-		
-			marques();		
-		);*/
-		/*$("#buscardades").click(function llistar() {
-			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/buscar.php",
-				dataType: "text",
-				success: Buscar			
-			})
-		});
-		function Buscar(data){
-					//alert(data);
-				
-					$('#marquesx').html(data);
-					//var marca = data.innerHTML;
-					//document.getElementById("marquesx").html = data;
-					//marques();
-				
-		}*/
+
 		$("#buscardades").click(function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
@@ -245,78 +237,51 @@
 </script>
 </head>
 <body>
-	<div id="mapa">
-		<h2>Aquí anirà el mapa!</h2>
-	</div>
-	</br></br></br>
-	<div id="infor">
-		<div class="accordion" id="accordion2">
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-						<h3>Agregar</h3>
-					</a>
-				</div>
-				<div id="collapseOne" class="accordion-body collapse in">
-					<div class="accordion-inner">
-						<form id="formulari">
-							<table>
-								<tr>
-									<td><label for="Nombre">Nombre:</label></td>
-									<td><input type="text" name="Nombre" id="Nombre" value=""  /></td>
-								</tr>
-								<tr>
-									<td><label for="Descripcion">Descripcion:</label></td>
-									<td><textarea cols="40" rows="8"  name="Descripcion" id="Descripcion" value=""  /></textarea></td>
-								</tr>
-								<tr>
-									<td><label for="LatY">Latitud:</label></td>
-									<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
-								</tr>
-								<tr>
-									<td><label for="LongX">Longitud:</label></td>
-									<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
-								</tr>
-								<tr>
-									<td><button type="button" data-theme="a" id="guardardatos">Enviar</button></td>
-									<td><button type="button" onclick="window.location.href='index.html'">Cancel·lar</button></td>
-								</tr>
-							</table>
-						</form>
-					</div>
-				</div>
-			</div>
-			</br></br></br>
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-						<h3>Buscar</h3>
-					</a>
-				</div>
-				<div id="collapseTwo" class="accordion-body collapse in">
-					<div class="accordion-inner">
-						<button type="button" data-theme="a" id="buscardades">Buscar</button>
-						<div id="marquesx">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			</br></br></br>
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-						<h3>Eliminar</h3>
-					</a>
-				</div>
-				<div id="collapseThree" class="accordion-body collapse in">
-					<div class="accordion-inner">
-						...
-					</div>
-				</div>
-			</div>
+	<div data-role="page" id="paginaMapa" data-url="map-page">        	
+		<div data-role="header">
+			<h1>La teva posició actual</h1>
+		</div>
+		
+			<div id="mapa"></div>
+			
+		<a href="#page2" id="manda" class="miBoton posicionBoton" >Anar al formulari</a>
+		<button type="button" data-theme="a" id="buscardades" class="miBoton posicionBoton">Buscar</button>
+	</div><!---FIN PAGINA MAPA--->
+	
+	
+	<div data-role="page" id="page2">
+		<div data-role="header">
+			<h1>Formulari</h1>
+		</div>
+		<div data-role="fieldcontain">
+			<form id="formulari">
+				<table>
+					<tr>
+						<td><label for="Nombre">Nombre:</label></td>
+						<td><input type="text" name="Nombre" id="Nombre" value=""  /></td>
+					</tr>
+					<tr>
+						<td><label for="Descripcion">Descripcion:</label></td>
+						<td><textarea cols="40" rows="8"  name="Descripcion" id="Descripcion" value=""  /></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="LatY">Latitud:</label></td>
+						<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
+					</tr>
+					<tr>
+						<td><label for="LongX">Longitud:</label></td>
+						<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
+					</tr>
+					<tr>
+						<td><button type="button" data-theme="a" id="guardardatos">Enviar</button></td>
+						<td><button type="button" onclick="window.location.href='index.html'">Cancel·lar</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h1>Pie de pagina</h1>	   
 		</div>
 	</div>
-	
 </body>
 </html>
