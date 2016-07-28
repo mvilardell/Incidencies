@@ -11,7 +11,6 @@
 		width: 400px;
 		height: 400px;
 		float:left;
-
 	}
 </style>
 <!--ESTILS DE BOOTSTRAP -->
@@ -53,18 +52,17 @@
 				alert('Error en servicio Geolocalizador');
 				MuestraMapa(defaultPos); 
 			}
-						
+			
 			//maximumAge- Guarda la posicion por 5 minutos 
 			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
 			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
-			var options = {maximumAge: 500000, enableHighAccuracy:true, timeout: 5000};
+			var options = {maximumAge: 5000, enableHighAccuracy:true, timeout: 5000};
 			navigator.geolocation.getCurrentPosition(exito, falla, options );
 		}//FIN IF
 		else {
             MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
-        }
-	
-					 
+        }	
+		 
 		//FUNCION DIBUJAR MAPa
 		function MuestraMapa(latlng) {
 
@@ -73,7 +71,7 @@
             center: latlng,
 			disableDefaultUI: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP};
-						
+			
 			mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
 			
@@ -120,7 +118,7 @@
 			//treure_marcadors(marcadors_nous);
 			//UBICAR EL MARCADOR EN EL MAPA
 			marcador.setMap(mapa);
-				
+			
 			
 		}// Fin muestra mapa
 		
@@ -147,7 +145,7 @@
 		
 		function Enviamos(data){       
 			alert(data+"Reporte enviado");
-					
+			
 			$.mobile.changePage( window.location.href='index.html');
 		}
 
@@ -238,23 +236,19 @@
                 dataType: "text",
 				async: false,
                 success: EnviarTransit
-				});
-	 
-			
+				});			
 		}
 		function EnviarTransit(data){       
-					
-
+			//$.mobile.changePage( window.location.href='index.html');
 			location.reload();
 		}
 		/*function reloader() {
-			location.reload();
+			
 		}
 		
-		setInterval(reloader,4000);*/
- 
-		//con esta funcion llamamos a la función getTimeAJAX cada segundo para actualizar el div que mostrará la hora
-		setInterval(getTransit,5000);
+		setInterval(reloader,6000);*/
+
+		setInterval(getTransit,6000);
 	});
 
 </script>
