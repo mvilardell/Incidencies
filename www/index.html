@@ -233,12 +233,12 @@
 	 
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/transit.php",
-                data: ({LatY: fLatY, LongX: fLongX}),
-                cache: false,
-                dataType: "text",
+		                data: ({LatY: fLatY, LongX: fLongX}),
+		                cache: false,
+		                dataType: "text",
 				async: false,
-                success: EnviarTransit
-				})
+        			 success: EnviarTransit
+			});
 	 
 			
 		}
