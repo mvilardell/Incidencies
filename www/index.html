@@ -2,15 +2,19 @@
 <head>
 <style>
 	#mapa{
-		width: 400px;
-		height: 400px;
-		float:left;
-		background: green;
+		height:100%;
+		width:100%;
+		padding:0;
+		position:absolute !important;
+		top: 0px;
+		bottom:0px;
+		left:0px;
+		right:0px;
 	}
 	#infor{
-		width: 400px;
-		height: 400px;
-		float:left;
+		top:0px;
+		left:0px;
+		position:absolute;
 	}
 </style>
 <!--ESTILS DE BOOTSTRAP -->
@@ -65,7 +69,6 @@
 		 
 		//FUNCION DIBUJAR MAPa
 		function MuestraMapa(latlng) {
-
 			var config = {
             zoom: 16,
             center: latlng,
@@ -99,9 +102,7 @@
 			//PASSAR LES COORDENADES AL FORMULARI
 			formulari.find("input[name='LongX']").val(llista[1]);
 			formulari.find("input[name='LatY']").val(llista[0]);
-			formulari.find("input[name='Descripcion']").val();
-			//UBICAR EL FOCUS AL CAMP TITOL
-			formulari.find("input[name='Nombre']").val();
+			
 			
 			
 			//DEIXAR NOMÉS 1 MARCADOR AL MAPA
@@ -122,103 +123,6 @@
 			
 		}// Fin muestra mapa
 		
-		$("#guardardatos").click(function() {
-			var fNombre = $("#Nombre").val();
-   			var fDescripcion = $("#Descripcion").val();
-    		var fLatY = $("#LatY").val();
-			var fLongX = $("#LongX").val();
-				
-			$("#Nombre").val(" ");
-    		$("#Descripcion").val(" ");
-    		$("#LatY").val(" ");
-			$("#LongX").val(" ");
-				
-			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/agregar.php",
-                data: ({Nombre: fNombre, Descripcion: fDescripcion, LatY: fLatY, LongX: fLongX}),
-                cache: false,
-                dataType: "text",
-                success: Enviamos
-            });
-				
-		});
-		
-		function Enviamos(data){       
-			alert(data+"Reporte enviado");
-			
-			$.mobile.changePage( window.location.href='index.html');
-		}
-
-		$("#buscardades").click(function llistar() {
-			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/llista.php",
-				dataType: "text",
-				success:function(data){
-					if(data != null)
-					{
-						var dades = data.split("#");
-
-						var i = 0;
-						var n = 1;
-						var d = 2;
-						var y = 3;
-						var x = 4;
-						var f = 5;
-						var h = 6;
-
-						for (;dades[i];) {
-							
-							//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(dades[y], dades[x]);
-							
-							//CARREGAR LES PROPIETATS AL MARCADOR
-							var marca = new google.maps.Marker({
-								idMarcador:dades[i],
-								position:posi,
-								titol: dades[n]
-							});
-							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
-							
-							
-							
-							//UBICAR EL MARCADOR AL MAPA
-							marca.setMap(mapa);
-							
-							var infowindow = new google.maps.InfoWindow({
-								position: posi,
-								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
-							});
-						
-							infowindow.open(mapa,marca);
-							
-							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-							marcadors_bd.push(marca);
-							
-							i=i+7;
-							n=n+7;
-							d=d+7;
-							y=y+7;
-							x=x+7;
-							f=f+7;
-							h=h+7;
-						
-						}
-
-					}
-				else
-					{
-						alert("No hi ha dades");
-					}
-				},
-				beforeSend:function(){
-				
-				},
-				complete:function(){
-				
-				}
-			});
-				
-		});
 		
 		function getTransit() {
 			var fLatY = $("#LatY").val();
@@ -230,7 +134,7 @@
    
 	 
 			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/MapsApi/transit.php",
+				url: "http://www.grupllobet.com/apptest/Rastrejador/transit.php",
                 data: ({LatY: fLatY, LongX: fLongX}),
                 cache: false,
                 dataType: "text",
@@ -239,89 +143,31 @@
 				});			
 		}
 		function EnviarTransit(data){       
-			//$.mobile.changePage( window.location.href='index.html');
+
 			location.reload();
 		}
-		/*function reloader() {
-			
-		}
-		
-		setInterval(reloader,6000);*/
 
 		setInterval(getTransit,6000);
 	});
-
 </script>
 </head>
 <body>
 	<div id="mapa">
 		<h2>Aquí anirà el mapa!</h2>
 	</div>
-	</br></br></br>
 	<div id="infor">
-		<div class="accordion" id="accordion2">
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-						<h3>Agregar</h3>
-					</a>
-				</div>
-				<div id="collapseOne" class="accordion-body collapse in">
-					<div class="accordion-inner">
-						<form id="formulari">
-							<table>
-								<tr>
-									<td><label for="Nombre">Nombre:</label></td>
-									<td><input type="text" name="Nombre" id="Nombre" value=""  /></td>
-								</tr>
-								<tr>
-									<td><label for="Descripcion">Descripcion:</label></td>
-									<td><textarea cols="40" rows="8"  name="Descripcion" id="Descripcion" value=""  /></textarea></td>
-								</tr>
-								<tr>
-									<td><label for="LatY">Latitud:</label></td>
-									<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
-								</tr>
-								<tr>
-									<td><label for="LongX">Longitud:</label></td>
-									<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
-								</tr>
-								<tr>
-									<td><button type="button" data-theme="a" id="guardardatos">Enviar</button></td>
-									<td><button type="button" onclick="window.location.href='index.html'">Cancel·lar</button></td>
-								</tr>
-							</table>
-						</form>
-					</div>
-				</div>
-			</div>
-			</br></br></br>
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-						<h3>Buscar</h3>
-					</a>
-				</div>
-				<div id="collapseTwo" class="accordion-body collapse in">
-					<div class="accordion-inner">
-						<button type="button" data-theme="a" id="buscardades">Buscar</button>
-					</div>
-				</div>
-			</div>
-			</br></br></br>
-			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-						<h3>Eliminar</h3>
-					</a>
-				</div>
-				<div id="collapseThree" class="accordion-body collapse in">
-					<div class="accordion-inner">
-						...
-					</div>
-				</div>
-			</div>
-		</div>
+		<form id="formulari">
+			<table>				
+				<tr>
+					<td><label for="LatY">Latitud:</label></td>
+					<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
+				</tr>
+				<tr>
+					<td><label for="LongX">Longitud:</label></td>
+					<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
+				</tr>
+			</table>
+		</form>
 	</div>	
 </body>
 </html>
