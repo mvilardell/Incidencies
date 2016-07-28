@@ -233,20 +233,24 @@
 	 
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/MapsApi/transit.php",
-		                data: ({LatY: fLatY, LongX: fLongX}),
-		                cache: false,
-		                dataType: "text",
+                data: ({LatY: fLatY, LongX: fLongX}),
+                cache: false,
+                dataType: "text",
 				async: false,
-        			 success: EnviarTransit
-			});
+                success: EnviarTransit
+				});
 	 
 			
 		}
 		function EnviarTransit(data){       
-			alert("Enviat");
 					
 			$.mobile.changePage( window.location.href='index.html');
 		}
+		function reloader() {
+			location.reload();
+		}
+		
+		setInterval(reloader,4000);
  
 		//con esta funcion llamamos a la función getTimeAJAX cada segundo para actualizar el div que mostrará la hora
 		setInterval(getTransit,5000);
