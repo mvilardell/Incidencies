@@ -60,7 +60,7 @@
 			//maximumAge- Guarda la posicion por x minutos 
 			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
 			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
-			var options = {maximumAge: 5000, enableHighAccuracy:true, timeout: 5000};
+			var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 5000};
 			navigator.geolocation.getCurrentPosition(exito, falla, options );
 		}//FIN IF
 		else {
@@ -201,7 +201,7 @@
 			location.reload();
 		}
 
-		setInterval(Refrescar,5000);
+		setInterval(Refrescar,30000);
 	});
 </script>
 </head>
