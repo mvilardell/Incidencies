@@ -57,10 +57,10 @@
 				MuestraMapa(defaultPos); 
 			}
 			
-			//maximumAge- Guarda la posicion por 5 minutos 
+			//maximumAge- Guarda la posicion por x minutos 
 			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
 			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
-			var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 5000};
+			var options = {maximumAge: 5000, enableHighAccuracy:true, timeout: 5000};
 			navigator.geolocation.getCurrentPosition(exito, falla, options );
 		}//FIN IF
 		else {
@@ -123,6 +123,72 @@
 			
 		}// Fin muestra mapa
 		
+		function llistar() {
+			$.ajax({type: "POST", 
+				url: "http://www.grupllobet.com/apptest/CalculDistancia/llista.php",
+				dataType: "text",
+				success:function(data){
+					if(data != null)
+					{
+						var dades = data.split("#");
+
+						var i = 0;
+						var n = 1;
+						var d = 2;
+						var y = 3;
+						var x = 4;
+						var f = 5;
+						var h = 6;
+
+						for (;dades[i];) {
+							
+							//OBTENIR LES COORDENADES DEL PUNT
+							var posi = new google.maps.LatLng(dades[y], dades[x]);
+							
+							//CARREGAR LES PROPIETATS AL MARCADOR
+							var marca = new google.maps.Marker({
+								idMarcador:dades[i],
+								position:posi,
+								titol: dades[n]
+							});
+							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
+							
+							//UBICAR EL MARCADOR AL MAPA
+							marca.setMap(mapa);
+							
+							var infowindow = new google.maps.InfoWindow({
+								position: posi,
+								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+							});
+						
+							infowindow.open(mapa,marca);
+							
+							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
+							marcadors_bd.push(marca);
+							
+							i=i+7;
+							n=n+7;
+							d=d+7;
+							y=y+7;
+							x=x+7;
+							f=f+7;
+							h=h+7;
+						
+						}
+					}
+				else
+					{
+						alert("No hi ha dades");
+					}
+				},
+				beforeSend:function(){
+				
+				},
+				complete:function(){
+				
+				}
+			});				
+		}
 		
 		function getTransit() {
 			var fLatY = $("#LatY").val();
@@ -134,7 +200,7 @@
    
 	 
 			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/Rastrejador/transit.php",
+				url: "http://www.grupllobet.com/apptest/CalculDistancia/transit.php",
                 data: ({LatY: fLatY, LongX: fLongX}),
                 cache: false,
                 dataType: "text",
@@ -147,7 +213,7 @@
 			location.reload();
 		}
 
-		setInterval(getTransit,30000);
+		setInterval(getTransit,5000);
 	});
 </script>
 </head>
