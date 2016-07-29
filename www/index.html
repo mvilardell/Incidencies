@@ -96,6 +96,7 @@
 			var marcador = new google.maps.Marker({
 				position: latlng, //POSICIO DEL NOU MARCADOR
 				animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
+				icon: man,
 				draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 			});
 			
@@ -156,12 +157,12 @@
 							//UBICAR EL MARCADOR AL MAPA
 							marca.setMap(mapa);
 							
-							var infowindow = new google.maps.InfoWindow({
+							/*var infowindow = new google.maps.InfoWindow({
 								position: posi,
 								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
 							});
 						
-							infowindow.open(mapa,marca);
+							infowindow.open(mapa,marca);*/
 							
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
