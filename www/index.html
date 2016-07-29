@@ -30,7 +30,6 @@
 	var marcadors_nous = [];
 	var marcadors_bd = [];
 	var mapa = null;
-
 	//FUNCIO PER TREURE MARCADORS DEL MAPA
 	function treure_marcadors(llista)
 	{
@@ -61,7 +60,7 @@
 			//maximumAge- Guarda la posicion por x minutos 
 			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
 			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
-			var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 5000};
+			var options = {maximumAge: 5000, enableHighAccuracy:true, timeout: 5000};
 			navigator.geolocation.getCurrentPosition(exito, falla, options );
 		}//FIN IF
 		else {
@@ -93,7 +92,6 @@
 			//COORDENADES PER SEPARAT
 			var llista = coordenades.split(",");
 			
-		
 			//VARIABLE PEL MARCADOR
 			var marcador = new google.maps.Marker({
 				position: latlng, //POSICIO DEL NOU MARCADOR
@@ -131,7 +129,7 @@
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/CalculDistancia/llista.php",
 				dataType: "text",
-				success:function(){
+				success:function(data){
 					if(data != null)
 					{
 						var dades = data.split("#");
@@ -145,12 +143,13 @@
 						var h = 6;
 
 						for (;dades[i];) {
-							//var posiactual = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+							var posiactual = new google.maps.LatLng(latlng);
 							//var posiactual = new google.maps.LatLng(coords.latitude, coords.longitude);
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
-							//alert(posi);
 							
+							var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
+							alert(distancia);
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
 								idMarcador:dades[i],
@@ -202,7 +201,7 @@
 			location.reload();
 		}
 
-		setInterval(Refrescar,30000);
+		setInterval(Refrescar,5000);
 	});
 </script>
 </head>
