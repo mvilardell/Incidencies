@@ -114,7 +114,7 @@
 			google.maps.event.addListener(marcador, "click", function(){
 				
 			});	
-			llistar();
+			
 			
 			//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
 			//I AIXÍ DEIXAR-NE NOMÉS UN
@@ -123,8 +123,8 @@
 			marcador.setMap(mapa);
 			
 			
-		}// Fin muestra mapa
-		function llistar() {
+		
+		
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/CalculDistancia/llista.php",
 				dataType: "text",
@@ -143,9 +143,9 @@
 
 						for (;dades[i];) {
 						
-							var coordenades = event.latLng.toString();
+							/*var posi1 = new google.maps.LatLng(llista[0], llista[1]);
 						
-							alert (coordenades);
+							alert (posi1);*/
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							
