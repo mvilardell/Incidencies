@@ -30,7 +30,7 @@
 	var marcadors_nous = [];
 	var marcadors_bd = [];
 	var mapa = null;
-	var posiactual = null;
+	//var posiactual = null;
 	//FUNCIO PER TREURE MARCADORS DEL MAPA
 	function treure_marcadors(llista)
 	{
@@ -93,7 +93,7 @@
 			//COORDENADES PER SEPARAT
 			var llista = coordenades.split(",");
 			
-			posiactual = new google.maps.LatLng(llista[0], llista[1]);
+			//posiactual = new google.maps.LatLng(llista[0], llista[1]);
 			//VARIABLE PEL MARCADOR
 			var marcador = new google.maps.Marker({
 				position: latlng, //POSICIO DEL NOU MARCADOR
@@ -150,7 +150,11 @@
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							alert(posi);
-							alert(posiactual);
+							var x1=new google.maps.LatLng(50.995093,-16.417091);
+							var x2=new google.maps.LatLng(50.997698,-16.41788);
+							var distancia = google.maps.geometry.spherical.computeDistanceBetween(x1, x2);
+							alert(distancia);
+							//alert(posiactual);
 							//var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
 							//alert(distancia);
 							//CARREGAR LES PROPIETATS AL MARCADOR
