@@ -143,14 +143,9 @@
 
 						for (;dades[i];) {
 						
-							var fLatY = $("#LatY").val();
-							var fLongX = $("#LongX").val();
-							
-							$("#LatY").val(" ");
-							$("#LongX").val(" ");
-							
-							var posiactual = new google.maps.LatLng(fLatY, fLongX);
-							alert posiactual
+							var coordenades = String(latlng);//event.latLng.toString();
+						
+							alert (coordenades);
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							
