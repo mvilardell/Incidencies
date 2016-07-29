@@ -30,6 +30,7 @@
 	var marcadors_nous = [];
 	var marcadors_bd = [];
 	var mapa = null;
+	var posiactual = null;
 	//FUNCIO PER TREURE MARCADORS DEL MAPA
 	function treure_marcadors(llista)
 	{
@@ -92,7 +93,7 @@
 			//COORDENADES PER SEPARAT
 			var llista = coordenades.split(",");
 			
-			var posiactual = new google.maps.LatLng(llista[0], llista[1]);
+			posiactual = new google.maps.LatLng(llista[0], llista[1]);
 			//VARIABLE PEL MARCADOR
 			var marcador = new google.maps.Marker({
 				position: latlng, //POSICIO DEL NOU MARCADOR
@@ -126,11 +127,11 @@
 			
 		}// Fin muestra mapa
 		
-		function llistar(posiactual) {
+		function llistar() {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/CalculDistancia/llista.php",
 				dataType: "text",
-				success:function(posiactual){
+				success:function(){
 					if(data != null)
 					{
 						var dades = data.split("#");
