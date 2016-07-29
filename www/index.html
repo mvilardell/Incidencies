@@ -190,30 +190,13 @@
 			});				
 		}
 		
-		function getTransit() {
-			var fLatY = $("#LatY").val();
-			var fLongX = $("#LongX").val();
-			
-			$("#LatY").val(" ");
-			$("#LongX").val(" ");
-	 
-   
-	 
-			$.ajax({type: "POST", 
-				url: "http://www.grupllobet.com/apptest/CalculDistancia/transit.php",
-                data: ({LatY: fLatY, LongX: fLongX}),
-                cache: false,
-                dataType: "text",
-				async: false,
-                success: EnviarTransit
-				});			
-		}
-		function EnviarTransit(data){       
+		
+		function Refrescar(){       
 
 			location.reload();
 		}
 
-		setInterval(getTransit,5000);
+		setInterval(Refrescar,5000);
 	});
 </script>
 </head>
