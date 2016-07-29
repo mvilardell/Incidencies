@@ -143,13 +143,13 @@
 						var h = 6;
 
 						for (;dades[i];) {
-							//var posiactual = new google.maps.LatLng(latlng);
+							var posiactual = new google.maps.LatLng(latlng);
 							//var posiactual = new google.maps.LatLng(coords.latitude, coords.longitude);
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							
-							//var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
-							//alert(distancia);
+							var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
+							alert(distancia);
 							//CARREGAR LES PROPIETATS AL MARCADOR
 							var marca = new google.maps.Marker({
 								idMarcador:dades[i],
@@ -161,12 +161,12 @@
 							//UBICAR EL MARCADOR AL MAPA
 							marca.setMap(mapa);
 							
-							var infowindow = new google.maps.InfoWindow({
+							/*var infowindow = new google.maps.InfoWindow({
 								position: posi,
 								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
 							});
 						
-							infowindow.open(mapa,marca);
+							infowindow.open(mapa,marca);*/
 							
 							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 							marcadors_bd.push(marca);
