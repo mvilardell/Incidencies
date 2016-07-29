@@ -124,11 +124,11 @@
 			
 			
 		}// Fin muestra mapa
-		function llistar(llista) {
+		function llistar(pos) {
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/CalculDistancia/llista.php",
 				dataType: "text",
-				success:function(data, llista){
+				success:function(data, pos){
 					if(data != null)
 					{
 						var dades = data.split("#");
@@ -143,7 +143,7 @@
 
 						for (;dades[i];) {
 							
-							var posiactual = new google.maps.LatLng(coords.llista[0], coords.llista[1]);
+							var posiactual = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 							alert("posi"+posiactual);
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
