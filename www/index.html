@@ -141,41 +141,65 @@
 						var x = 4;
 						var f = 5;
 						var h = 6;
-
-						for (;dades[i];) {
-						
-							var posiactual = new google.maps.LatLng(llista[0], llista[1]);
-						
-							//alert (posi1);
-							//OBTENIR LES COORDENADES DEL PUNT
-							var posi = new google.maps.LatLng(dades[y], dades[x]);
-							
-							var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
-							
-							//alert(distancia);
-							if(distancia <= 1000){
+						$.ajax({type: "POST", 
+							url: "http://www.grupllobet.com/apptest/CalculDistancia/distancia.php",
+							dataType: "text",
+							success:function(data){
 								
-								if(distancia <= 20){
-									var marca = new google.maps.Marker({
-										idMarcador:dades[i],
-										position:posi,
-										icon:'imatges/green-dot.png',
-										titol: dades[n]
-									});
+								//AGAFO EL PARAMETRE VALOR DE LA TAULA CONFIG, ELS GUARDO EN UN STRING, I FAIG UN SPLIT PER SEPARAR-LOS I GUARDAR-LOS EN UN ARRAY.
+								var limits = data.split("#");
+								
+								for (;dades[i];) {
+								
+									var posiactual = new google.maps.LatLng(llista[0], llista[1]);
+								
+									//alert (posi1);
+									//OBTENIR LES COORDENADES DEL PUNT
+									var posi = new google.maps.LatLng(dades[y], dades[x]);
 									
-									//UBICAR EL MARCADOR AL MAPA
-									marca.setMap(mapa);
+									var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
 									
-									var infowindow = new google.maps.InfoWindow({
-										position: posi,
-										content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
-									});
-								
-									infowindow.open(mapa,marca);
-								
-								
-								}else{
-									var marca = new google.maps.Marker({
+									//alert(distancia);
+									//SI LA DISTANCIA ÉS IGUAL O MENOR A 1000.
+									if(distancia <= limits[1]){
+										
+										//SI LA DISTANCIA ÉS MENOR A 20.
+										if(distancia <= limits[0]){
+											var marca = new google.maps.Marker({
+												idMarcador:dades[i],
+												position:posi,
+												icon:'imatges/green-dot.png',
+												titol: dades[n]
+											});
+											
+											//UBICAR EL MARCADOR AL MAPA
+											marca.setMap(mapa);
+											
+											var infowindow = new google.maps.InfoWindow({
+												position: posi,
+												content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+											});
+										
+											infowindow.open(mapa,marca);
+										
+										
+										}else{
+											var marca = new google.maps.Marker({
+												idMarcador:dades[i],
+												position:posi,
+												titol: dades[n]
+											});
+											//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
+											
+											
+											
+											//UBICAR EL MARCADOR AL MAPA
+											marca.setMap(mapa);
+										}
+									
+									}
+									//CARREGAR LES PROPIETATS AL MARCADOR
+									/*var marca = new google.maps.Marker({
 										idMarcador:dades[i],
 										position:posi,
 										titol: dades[n]
@@ -186,41 +210,28 @@
 									
 									//UBICAR EL MARCADOR AL MAPA
 									marca.setMap(mapa);
+									
+									var infowindow = new google.maps.InfoWindow({
+										position: posi,
+										content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+									});
+								
+									infowindow.open(mapa,marca);*/
+									
+									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
+									marcadors_bd.push(marca);
+									
+									i=i+7;
+									n=n+7;
+									d=d+7;
+									y=y+7;
+									x=x+7;
+									f=f+7;
+									h=h+7;
+								
 								}
-							
 							}
-							//CARREGAR LES PROPIETATS AL MARCADOR
-							/*var marca = new google.maps.Marker({
-								idMarcador:dades[i],
-								position:posi,
-								titol: dades[n]
-							});
-							//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
-							
-							
-							
-							//UBICAR EL MARCADOR AL MAPA
-							marca.setMap(mapa);
-							
-							var infowindow = new google.maps.InfoWindow({
-								position: posi,
-								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
-							});
-						
-							infowindow.open(mapa,marca);*/
-							
-							//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
-							marcadors_bd.push(marca);
-							
-							i=i+7;
-							n=n+7;
-							d=d+7;
-							y=y+7;
-							x=x+7;
-							f=f+7;
-							h=h+7;
-						
-						}
+						});
 
 					}
 				else
