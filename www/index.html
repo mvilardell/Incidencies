@@ -7,25 +7,37 @@
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script>
 	$(function(){
-		$("#ferlogin").click(function(){
-			var fEmail = $("#Email").val();
-			var fPassw = $("#Passw").val();
-			
-			$("#Email").val(" ");
-			$("#Passw").val(" ");
-			
-			$.ajax({type: "POST",
-				url:"http://www.grupllobet.com/apptest/App1/login.php",
-				data:({TEXT: fTEXT}),
-				cache: false,
-				dataType: "text",
-				success: Enviar
+		$(document).on("ready", function(){
+			$("#ferlogin").click(function(){
+				var fEmail = $("#Email").val();
+				var fPassw = $("#Passw").val();
+				
+				$("#Email").val(" ");
+				$("#Passw").val(" ");
+				
+				$.ajax({type: "POST",
+					url:"http://www.grupllobet.com/apptest/App1/login.php",
+					data:({Email: fEmail, Passw: fPassw}),
+					cache: false,
+					dataType: "text",
+					success: Enviar
+				});
 			});
+			function Enviar(data){
+				if (data == true) {
+					$.mobile.changePage("mapa.html");
+				}
+				else{
+					alert("Login incorrecte");
+				}
+				//alert("Login correcte");
+				
+				/** GUARDAMOS DATOS EN localStorage **/		
+				//window.localStorage.setItem("id_user", data.id_user);
+				//window.localStorage.setItem("username", data.username);
+				
+			}
 		});
-		function Enviar(data){
-			alert("Login correcte");
-			
-		}
 	});
 	</script>
 </head>
@@ -43,7 +55,7 @@
 				</tr>
 				<tr>
 					<td><label for="Passw">Password:</label></td>
-					<td><input type="text" name="Passw" id="Passw" value="" /></td>
+					<td><input type="password" name="Passw" id="Passw" value="" /></td>
 				</tr>
 				<tr>
 					<td><button type="button" id="ferlogin">OK</button></td>
