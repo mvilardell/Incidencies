@@ -141,6 +141,7 @@
 						var x = 4;
 						var f = 5;
 						var h = 6;
+						var l = 7;
 						$.ajax({type: "POST", 
 							url: "http://www.grupllobet.com/apptest/CalculDistancia/distancia.php",
 							dataType: "text",
@@ -177,7 +178,7 @@
 											
 											var infowindow = new google.maps.InfoWindow({
 												position: posi,
-												content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+												content:'link:'+dades[l]+'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
 											});
 										
 											infowindow.open(mapa,marca);
@@ -198,36 +199,18 @@
 										}
 									
 									}
-									//CARREGAR LES PROPIETATS AL MARCADOR
-									/*var marca = new google.maps.Marker({
-										idMarcador:dades[i],
-										position:posi,
-										titol: dades[n]
-									});
-									//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
-									
-									
-									
-									//UBICAR EL MARCADOR AL MAPA
-									marca.setMap(mapa);
-									
-									var infowindow = new google.maps.InfoWindow({
-										position: posi,
-										content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
-									});
-								
-									infowindow.open(mapa,marca);*/
 									
 									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 									marcadors_bd.push(marca);
 									
-									i=i+7;
-									n=n+7;
-									d=d+7;
-									y=y+7;
-									x=x+7;
-									f=f+7;
-									h=h+7;
+									i=i+8;
+									n=n+8;
+									d=d+8;
+									y=y+8;
+									x=x+8;
+									f=f+8;
+									h=h+8;
+									l=l+8;
 								
 								}
 							}
