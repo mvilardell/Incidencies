@@ -24,11 +24,11 @@
 				});
 			});
 			function Enviar(data){
-				if (data == true) {
-					$.mobile.changePage("mapa.html");
+				if (data != true) {
+					alert("Login incorrecte");
 				}
 				else{
-					alert("Login incorrecte");
+					$.mobile.changePage("mapa.html");
 				}
 				//alert("Login correcte");
 				
@@ -55,7 +55,7 @@
 				</tr>
 				<tr>
 					<td><label for="Passw">Password:</label></td>
-					<td><input type="password" name="Passw" id="Passw" value="" /></td>
+					<td><input type="text" name="Passw" id="Passw" value="" /></td>
 				</tr>
 				<tr>
 					<td><button type="button" id="ferlogin">OK</button></td>
