@@ -139,6 +139,7 @@
 						var d = 2;
 						var y = 3;
 						var x = 4;
+						var l = 5;
 					
 						$.ajax({type: "POST", 
 							url: "http://www.grupllobet.com/apptest/App1/distancia.php",
@@ -176,7 +177,7 @@
 											
 											var infowindow = new google.maps.InfoWindow({
 												position: posi,
-												content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]
+												content: dades[l]+'</br>ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]
 											});
 										
 											infowindow.open(mapa,marca);
@@ -200,11 +201,12 @@
 									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 									marcadors_bd.push(marca);
 									
-									i=i+5;
-									n=n+5;
-									d=d+5;
-									y=y+5;
-									x=x+5;
+									i=i+6;
+									n=n+6;
+									d=d+6;
+									y=y+6;
+									x=x+6;
+									l=l+6;
 
 								}
 							}
