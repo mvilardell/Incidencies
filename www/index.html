@@ -134,13 +134,11 @@
 					{
 						var dades = data.split("#");
 
-						var i = 0;
-						var n = 1;
-						var d = 2;
-						var y = 3;
-						var x = 4;
-						var f = 5;
-						var h = 6;
+						var n = 0;
+						var d = 1;
+						var y = 2;
+						var x = 3;
+						
 						$.ajax({type: "POST", 
 							url: "http://www.grupllobet.com/apptest/CalculDistancia/distancia.php",
 							dataType: "text",
@@ -177,7 +175,7 @@
 											
 											var infowindow = new google.maps.InfoWindow({
 												position: posi,
-												content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+												content: '</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]
 											});
 										
 											infowindow.open(mapa,marca);
@@ -201,13 +199,12 @@
 									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 									marcadors_bd.push(marca);
 									
-									i=i+7;
-									n=n+7;
-									d=d+7;
-									y=y+7;
-									x=x+7;
-									f=f+7;
-									h=h+7;
+
+									n=n+4;
+									d=d+4;
+									y=y+4;
+									x=x+4;
+									
 								
 								}
 							}
