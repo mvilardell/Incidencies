@@ -146,16 +146,51 @@
 						
 							var posiactual = new google.maps.LatLng(llista[0], llista[1]);
 						
-							//alert (posiactual);
+							//alert (posi1);
 							//OBTENIR LES COORDENADES DEL PUNT
 							var posi = new google.maps.LatLng(dades[y], dades[x]);
 							
 							var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
 							
-							alert(distancia);
+							//alert(distancia);
+							if(distancia <= 1000){
+								
+								if(distancia <= 20){
+									var marca = new google.maps.Marker({
+										idMarcador:dades[i],
+										position:posi,
+										icon:'imatges/green-dot.png',
+										titol: dades[n]
+									});
+									
+									//UBICAR EL MARCADOR AL MAPA
+									marca.setMap(mapa);
+									
+									var infowindow = new google.maps.InfoWindow({
+										position: posi,
+										content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
+									});
+								
+									infowindow.open(mapa,marca);
+								
+								
+								}else{
+									var marca = new google.maps.Marker({
+										idMarcador:dades[i],
+										position:posi,
+										titol: dades[n]
+									});
+									//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
+									
+									
+									
+									//UBICAR EL MARCADOR AL MAPA
+									marca.setMap(mapa);
+								}
 							
+							}
 							//CARREGAR LES PROPIETATS AL MARCADOR
-							var marca = new google.maps.Marker({
+							/*var marca = new google.maps.Marker({
 								idMarcador:dades[i],
 								position:posi,
 								titol: dades[n]
@@ -167,7 +202,7 @@
 							//UBICAR EL MARCADOR AL MAPA
 							marca.setMap(mapa);
 							
-							/*var infowindow = new google.maps.InfoWindow({
+							var infowindow = new google.maps.InfoWindow({
 								position: posi,
 								content: 'ID:'+dades[i]+'</br>Nom:'+dades[n]+'</br>Descripcio:'+dades[d]+'</br>Data:'+dades[f]+'</br>Hora:'+dades[h]
 							});
