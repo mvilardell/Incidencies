@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <head>
-
+	<!--ESTILS DE BOOTSTRAP -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script>
+	$(function(){
+		$("#ferlogin").click(function(){
+			var fEmail = $("#Email").val();
+			var fPassw = $("#Passw").val();
+			
+			$("#Email").val(" ");
+			$("#Passw").val(" ");
+			
+			$.ajax({type: "POST",
+				url:"http://www.grupllobet.com/apptest/App1/login.php",
+				data:({TEXT: fTEXT}),
+				cache: false,
+				dataType: "text",
+				success: Enviar
+			});
+		});
+		function Enviar(data){
+			alert("Login correcte");
+			
+		}
+	});
+	</script>
 </head>
 <body>
 	<div id="Login">
-		<h2>Aquí es fara el Login</h2>
+		<form id="FormLogin">
+			
+			<table>	
+				<tr>
+					<td><h3>Login</h3></td>
+				</tr>
+				<tr>
+					<td><label for="Email">Email:</label></td>
+					<td><input type="text"  name="Email" id="Email" value=""  /></td>
+				</tr>
+				<tr>
+					<td><label for="Passw">Password:</label></td>
+					<td><input type="text" name="Passw" id="Passw" value="" /></td>
+				</tr>
+				<tr>
+					<td><button type="button" id="ferlogin">OK</button></td>
+				</tr>
+			</table>
+		</form>
 		<a href="html/mapa.html">mostrar mapa</a>
 	</div>
 	
 </body>
 </html>
-
-
-
