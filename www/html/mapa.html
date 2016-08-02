@@ -78,8 +78,6 @@
 			
 			mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
-			
-			
 			//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
 			//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
 			//EL CUAL DEVUELVE LAS COORDENADAS DE DONDE SE HIZO CLICK
@@ -105,8 +103,6 @@
 			formulari.find("input[name='LongX']").val(llista[1]);
 			formulari.find("input[name='LatY']").val(llista[0]);
 			
-			
-			
 			//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 			//GUARDAR EL MARCADOR A L'ARRAY
 			marcadors_nous.push(marcador);
@@ -116,15 +112,11 @@
 				
 			});	
 			
-			
 			//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
 			//I AIXÍ DEIXAR-NE NOMÉS UN
 			//treure_marcadors(marcadors_nous);
 			//UBICAR EL MARCADOR EN EL MAPA
-			marcador.setMap(mapa);
-			
-			
-		
+			marcador.setMap(mapa);		
 		
 			$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/App1/llista.php",
@@ -154,7 +146,6 @@
 								
 									var posiactual = new google.maps.LatLng(llista[0], llista[1]);
 								
-									//alert (posi1);
 									//OBTENIR LES COORDENADES DEL PUNT
 									var posi = new google.maps.LatLng(dades[y], dades[x]);
 									
@@ -182,22 +173,17 @@
 											});
 										
 											infowindow.open(mapa,marca);
-										
-										
+											
 										}else{
 											var marca = new google.maps.Marker({
 												idMarcador:dades[i],
 												position:posi,
 												titol: dades[n]
 											});
-											//alert("..Has fet click a "+marca.idMarcador+" - " +marca.titol );
-											
-											
 											
 											//UBICAR EL MARCADOR AL MAPA
 											marca.setMap(mapa);
-										}
-									
+										}									
 									}									
 									//AGREGAR EL MARCADOR A LA VARIABLE MARCADORS_BD
 									marcadors_bd.push(marca);
@@ -209,11 +195,9 @@
 									x=x+7;
 									l=l+7;
 									im=im+7;
-
 								}
 							}
 						});
-
 					}
 				else
 					{
@@ -221,13 +205,13 @@
 					}
 				},
 				beforeSend:function(){
-				
 				},
 				complete:function(){
-				
 				}
 			});
-				
+		var prova = localStorage.getItem("Email");
+		alert (prova);
+		
 		}
 		
 		function Refrescar(){       
