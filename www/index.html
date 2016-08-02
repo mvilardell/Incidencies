@@ -14,8 +14,7 @@
 				
 				$("#Email").val("");
 				$("#Passw").val("");
-				alert(fEmail);
-				alert(fPassw);
+
 				$.ajax({type: "POST",
 					url:"http://www.grupllobet.com/apptest/App1/login.php",
 					data:({Email: fEmail, Passw: fPassw}),
@@ -27,13 +26,12 @@
 			function Enviar(data){
 				if (data != true) {
 					
-					alert (data);
 					alert("Login incorrecte");
 
 				}
 				else{
 					alert("Login correcte");
-					$.mobile.changePage( window.location.href='html/mapa.html');
+					location.href="html/mapa.html";
 				}
 				//alert("Login correcte");
 				
@@ -60,7 +58,7 @@
 				</tr>
 				<tr>
 					<td><label for="Passw">Password:</label></td>
-					<td><input type="text" name="Passw" id="Passw" value="" /></td>
+					<td><input type="password" name="Passw" id="Passw" value="" /></td>
 				</tr>
 				<tr>
 					<td><button type="button" id="ferlogin">OK</button></td>
@@ -71,4 +69,3 @@
 	</div>	
 </body>
 </html>
-
