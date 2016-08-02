@@ -5,15 +5,13 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/md5.js"></script>
 	<script>
 	$(function(){
 		$(document).on("ready", function(){
 			$("#ferlogin").click(function(){
 				var fEmail = $("#Email").val();
 				var fPassw = $("#Passw").val();
-				fPassw = md5(fPassw);
-				alert (fPassw);
+				
 				$("#Email").val("");
 				$("#Passw").val("");
 
@@ -67,8 +65,6 @@
 				</tr>
 			</table>
 		</form>
-		<a href="html/mapa.html">mostrar mapa</a>
 	</div>	
 </body>
 </html>
-
