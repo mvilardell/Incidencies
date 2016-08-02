@@ -26,7 +26,7 @@
 			});
 			function Enviar(data){
 				var dades = data.split("#");
-				if (dades[3] != true) {
+				if (dades[2] != true) {
 					
 					alert("Login incorrecte");
 
@@ -35,7 +35,6 @@
 					alert("Login correcte");
 					window.localStorage.setItem("Id", dades[0]);
 					window.localStorage.setItem("Email", dades[1]);
-					window.localStorage.setItem("Passw", dades[2]);
 					location.href="html/mapa.html";
 				}				
 				/** GUARDAMOS DATOS EN localStorage **/		
