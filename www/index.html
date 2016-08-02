@@ -5,6 +5,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
 	<script>
 	$(function(){
 		$(document).on("ready", function(){
@@ -24,21 +25,22 @@
 				});
 			});
 			function Enviar(data){
-				if (data != true) {
+				var dades = data.split("#");
+				if (dades[3] != true) {
 					
 					alert("Login incorrecte");
 
 				}
 				else{
 					alert("Login correcte");
+					window.localStorage.setItem("Id", dades[0]);
+					window.localStorage.setItem("Email", dades[1]);
+					window.localStorage.setItem("Passw", dades[2]);
 					location.href="html/mapa.html";
-				}
-				//alert("Login correcte");
-				
+				}				
 				/** GUARDAMOS DATOS EN localStorage **/		
 				//window.localStorage.setItem("id_user", data.id_user);
 				//window.localStorage.setItem("username", data.username);
-				
 			}
 		});
 	});
@@ -46,8 +48,7 @@
 </head>
 <body>
 	<div id="Login">
-		<form id="FormLogin">
-			
+		<form id="FormLogin">			
 			<table>	
 				<tr>
 					<td><h3>Login</h3></td>
