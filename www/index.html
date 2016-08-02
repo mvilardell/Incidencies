@@ -14,7 +14,7 @@
 				
 				$("#Email").val(" ");
 				$("#Passw").val(" ");
-				
+				alert(fEmail);
 				$.ajax({type: "POST",
 					url:"http://www.grupllobet.com/apptest/App1/login.php",
 					data:({Email: fEmail, Passw: fPassw}),
@@ -25,6 +25,8 @@
 			});
 			function Enviar(data){
 				if (data != true) {
+					
+					alert (data);
 					alert("Login incorrecte");
 				}
 				else{
@@ -68,4 +70,3 @@
 	
 </body>
 </html>
-
