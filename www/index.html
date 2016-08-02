@@ -15,6 +15,7 @@
 				$("#Email").val(" ");
 				$("#Passw").val(" ");
 				alert(fEmail);
+				alert(fPassw);
 				$.ajax({type: "POST",
 					url:"http://www.grupllobet.com/apptest/App1/login.php",
 					data:({Email: fEmail, Passw: fPassw}),
@@ -26,10 +27,11 @@
 			function Enviar(data){
 				if (data != true) {
 					
-					alert("Login incorrecte"+data);
+					alert (data);
+					alert("Login incorrecte");
 				}
 				else{
-					alert("Login correcte"+data);
+					alert("Login correcte");
 					$.mobile.changePage( window.location.href='html/mapa.html');
 				}
 				//alert("Login correcte");
