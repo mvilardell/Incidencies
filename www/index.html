@@ -12,8 +12,8 @@
 				var fEmail = $("#Email").val();
 				var fPassw = $("#Passw").val();
 				
-				$("#Email").val(" ");
-				$("#Passw").val(" ");
+				$("#Email").val("");
+				$("#Passw").val("");
 				alert(fEmail);
 				alert(fPassw);
 				$.ajax({type: "POST",
@@ -29,7 +29,9 @@
 					
 					alert (data);
 					alert("Login incorrecte");
-					location.reload();
+					fEmail = null;
+					fPassw = null;
+					
 				}
 				else{
 					alert("Login correcte");
