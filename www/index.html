@@ -26,11 +26,10 @@
 			function Enviar(data){
 				if (data != true) {
 					
-					alert (data);
-					alert("Login incorrecte");
+					alert("Login incorrecte"+data);
 				}
 				else{
-					alert("Login correcte");
+					alert("Login correcte"+data);
 					$.mobile.changePage( window.location.href='html/mapa.html');
 				}
 				//alert("Login correcte");
