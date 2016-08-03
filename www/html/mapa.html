@@ -151,7 +151,6 @@
 									
 									var distancia = google.maps.geometry.spherical.computeDistanceBetween(posiactual, posi);
 									
-									//alert(distancia);
 									//SI LA DISTANCIA ÉS IGUAL O MENOR A 1000.
 									if(distancia <= limits[1]){
 										
@@ -160,7 +159,7 @@
 											var marca = new google.maps.Marker({
 												idMarcador:dades[i],
 												position:posi,
-												icon:'../imatges/green-dot.png',
+												icon:'../imatges/logo_grup_llobet.png',
 												titol: dades[n]
 											});
 											var fIdMarca = dades[i];
@@ -168,9 +167,6 @@
 											$.ajax({type: "POST",
 												url: "http://www.grupllobet.com/apptest/App1/log_marcas.php",
 												data: ({IdUser: fIdUser, IdMarca: fIdMarca})
-												//cache: false;
-												//dataType: "text"
-												//success: function(){}
 											});
 											//UBICAR EL MARCADOR AL MAPA
 											marca.setMap(mapa);
@@ -187,6 +183,7 @@
 											var marca = new google.maps.Marker({
 												idMarcador:dades[i],
 												position:posi,
+												icon:'../imatges/logo_grup_llobet_negre.png',
 												titol: dades[n]
 											});
 											
@@ -218,21 +215,7 @@
 				complete:function(){
 				}
 			});
-		/*var prova = localStorage.getItem("Email");
-		alert (prova);*/
-		
 		}
-/*		function log_marcas(){
-			var fIdMarca = dades[i];
-			var fIdUser = localStorage.getItem("Id");
-			$.ajax({type: "POST",
-				url: "http://www.grupllobet.com/apptest/App1/log_marcas.php",
-				data: ({IdUser: fIdUser, IdMarca: fIdMarca})
-				//cache: false;
-				//dataType: "text"
-				//success: function(){}
-			});
-		}*/
 		
 		function Refrescar(){       
 
