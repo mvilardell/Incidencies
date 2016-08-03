@@ -163,10 +163,18 @@
 												icon:'../imatges/green-dot.png',
 												titol: dades[n]
 											});
-											
+											var fIdMarca = dades[i];
+											var fIdUser = localStorage.getItem("Id");
+											$.ajax({type: "POST",
+												url: "http://www.grupllobet.com/apptest/App1/log_marcas.php",
+												data: ({IdUser: fIdUser, IdMarca: fIdMarca})
+												//cache: false;
+												//dataType: "text"
+												//success: function(){}
+											});
 											//UBICAR EL MARCADOR AL MAPA
 											marca.setMap(mapa);
-											log_marcas();
+
 											
 											var infowindow = new google.maps.InfoWindow({
 												position: posi,
@@ -214,7 +222,7 @@
 		alert (prova);*/
 		
 		}
-		function log_marcas(){
+/*		function log_marcas(){
 			var fIdMarca = dades[i];
 			var fIdUser = localStorage.getItem("Id");
 			$.ajax({type: "POST",
@@ -224,7 +232,7 @@
 				//dataType: "text"
 				//success: function(){}
 			});
-		}
+		}*/
 		
 		function Refrescar(){       
 
