@@ -2,6 +2,7 @@
 <head>
 	<!--ESTILS DE BOOTSTRAP -->
 	<link href="css/bootstrap.min.css" rel="stylesheet"/>
+	<link type="text/css" href="css/estil.css" rel="stylesheet"/>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -48,7 +49,7 @@
 <body>
 	<div id="Login">
 		<form id="FormLogin">			
-			<table>	
+			<table style="margin: 0 auto;">	
 				<tr>
 					<td><h3>Login</h3></td>
 				</tr>
@@ -61,7 +62,8 @@
 					<td><input type="password" name="Passw" id="Passw" value="" /></td>
 				</tr>
 				<tr>
-					<td><button type="button" id="ferlogin">OK</button></td>
+					<td><button type="button" id="ferlogin">Entrar</button></td>
+					<td><button type="button" onclick="window.location.href='html/registre.html'">Registrar-se</button></td>
 				</tr>
 			</table>
 		</form>
