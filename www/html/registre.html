@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+	<!--ESTILS DE BOOTSTRAP -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+	<link type="text/css" href="../css/estil.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/md5.js"></script>
+	<script>
+	$(function(){
+		$(document).on("ready", function(){
+			$("#ferregistre").click(function(){
+				if(!validarEmail('Email', Email));
+					
+			});
+		});
+		
+		function validarEmail(Email, sortida){
+		
+			var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+			if($('#'+Email).val()==""){
+				alert('El camp'+sortida+'és necessari');
+				$('#'+Email).focus();
+				return false;
+			}else{
+				if(!expresio.test($('#'+Email).val())){					
+					alert('Aquest'+sortida+'no és vàlid');
+					$('#'+Email).focus();
+					return false;
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="formulari">
+		<h1>REGISTRE</h1>
+		<form method="POST">
+			<table>
+			<tr>
+				<td><label>Email:</label></td> 
+				<td><input type="text" name="Email" id="Email" value=""></td>
+			</tr>
+			<tr>
+				<td><label>Contrasenya:</label></td> 
+				<td><input type="text" name="Passw" id="Passw" value=""></td>
+			</tr>
+			<tr>
+				<td><button type="button" id="ferregistre">OK</button></td>
+				<td><button type="button" onclick="window.location.href='../index.html'">Tornar a l'inici</button></td>
+			</tr>
+		</form>	
+	</div>
+</body>
+</html>
