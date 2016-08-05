@@ -11,15 +11,17 @@
 	$(function(){
 		$(document).on("ready", function(){
 			$("#ferregistre").click(function(){
+				
 				var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-				if($('#Email').val()==""){
+				var fEmail = $("#Email").val();
+				if(fEmail = ""){
 					alert('Email necessari');
-					$('#Email').focus();
+					$("#Email").focus();
 					return false;
 				}else{
-					if(!expresio.test($('#Email').val())){					
+					if(!expresio.test(fEmail){					
 						alert('Email no vàlid');
-						$('#Email').focus();
+						$("#Email").focus();
 						return false;
 					}
 				}
@@ -65,7 +67,6 @@
 				<td><button type="button" id="ferregistre">OK</button></td>
 				<td><button type="button" onclick="window.location.href='../index.html'">Tornar</button></td>
 			</tr>
-			</table>
 		</form>	
 	</div>
 </body>
