@@ -14,17 +14,16 @@
 				
 				var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
 				var fEmail = $("#Email").val();
-				if(fEmail != ""){
+				if(fEmail == ""){
+					alert('Email necessari');
+					$("#Email").focus();
+					return false;
+				}else{
 					if(!expresio.test(fEmail)){					
 						alert('Email no vàlid');
 						$("#Email").focus();
 						return false;
 					});
-					
-				}else{
-					alert('Email necessari');
-					$("#Email").focus();
-					return false;
 				}
 			}
 			/*$("#ferregistre").click(function(){
