@@ -14,15 +14,14 @@
 				
 				var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
 				var fEmail = $("#Email").val();
+				var fPassw = $("#Passw").val();
 				if(fEmail == ""){
 					alert('Email necessari');
 					$("#Email").focus();
-					return false;
 				}else{
 					if(!expresio.test(fEmail)){					
 						alert('Email no vàlid');
 						$("#Email").focus();
-						return false;
 					}else{
 						$.ajax({type: "POST",
 							url:"http://www.grupllobet.com/apptest/App1/registre.php",
