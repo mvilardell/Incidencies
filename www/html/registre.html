@@ -10,27 +10,44 @@
 	<script>
 	$(function(){
 		$(document).on("ready", function(){
-		
-			$("#ferlogin").click(function(){
-				alert('click');
-				/*var fEmail = $("#Email").val();
-				var fPassw = $("#Passw").val();
+			$("#ferregistre").click(function(){
 				
-				$("#Email").val("");
-				$("#Passw").val("");
-
-				$.ajax({type: "POST",
-					url:"http://www.grupllobet.com/apptest/App1/registre.php",
-					data:({Email: fEmail, Passw: fPassw}),
-					cache: false,
-					dataType: "text",
-					success: Enviar
-				});*/
-			});
-			/*function Enviar(data){
-				alert(data);
-			}*/
-	}
+				var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+				var fEmail = $("#Email").val();
+				if(fEmail = ""){
+					alert('Email necessari');
+					$("#Email").focus();
+					return false;
+				}else{
+					if(!expresio.test(fEmail){					
+						alert('Email no vàlid');
+						$("#Email").focus();
+						return false;
+					}
+				}
+			}
+			/*$("#ferregistre").click(function(){
+				if(!validarEmail('Email', Email));
+					
+			});*/
+		});
+		
+		/*function validarEmail(Email, sortida){
+		
+			var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+			if($('#'+Email).val()==""){
+				alert('El camp'+sortida+'és necessari');
+				$('#'+Email).focus();
+				return false;
+			}else{
+				if(!expresio.test($('#'+Email).val())){					
+					alert('Aquest'+sortida+'no és vàlid');
+					$('#'+Email).focus();
+					return false;
+				}
+			}
+		}*/
+	});
 	</script>
 </head>
 <body>
