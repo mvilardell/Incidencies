@@ -178,6 +178,9 @@
 											});
 										
 											infowindow.open(mapa,marca);
+											google.maps.event.addListener(infoWindow,'click',function(){
+												alert("click");
+											});
 				
 										}else{
 											var marca = new google.maps.Marker({
@@ -202,13 +205,13 @@
 									l=l+7;
 									im=im+7;
 								}
-								function LogInteraccio(){
+								/*$("#clicimg").click(function(){
 									alert("click");
-									/*$.ajax({type: "POST",
+									$.ajax({type: "POST",
 										url: "http://www.grupllobet.com/apptest/App1/log_interaccions.php",
 										data: ({IdUser: fIdUser, IdMarca: fIdMarca})
-									});	*/							
-								}
+									});								
+								});*/
 								/*google.maps.event.addListener(infoWindow,'click',function(){
 									//var fIdMarca_interaccio = marca.idMarcador;
 									//var fIdUser_interaccio = localStorage.getItem("Id");
