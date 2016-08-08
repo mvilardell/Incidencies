@@ -1,9 +1,9 @@
 #Cos{
-	background-image: url(../imatges/Tablet_Grupllobet.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	background-image: url(../imatges/Tablet_Grupllobet.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 #Login{
 	padding:0;
