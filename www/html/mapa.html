@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <style>
-	#mapa{
+	<!--#mapa{
 		height:100%;
 		width:100%;
 		padding:0;
@@ -10,7 +10,7 @@
 		bottom:0px;
 		left:0px;
 		right:0px;
-	}
+	}-->
 	#infor{
 		top:0px;
 		left:0px;
@@ -28,11 +28,11 @@
 <script>
 	//VARIABLES GENERALS
 	//ARRAY PER EMMAGATZEMAR NOUS MARCADORS
-	var marcadors_nous = [];
-	var marcadors_bd = [];
+	//var marcadors_nous = [];
+	//var marcadors_bd = [];
 	var mapa = null;
 	//FUNCIO PER TREURE MARCADORS DEL MAPA
-	function treure_marcadors(llista)
+	/*function treure_marcadors(llista)
 	{
 		//RECORRE L'ARRAY DE MARCADORS	
 		for(i in llista)
@@ -40,7 +40,7 @@
 			//TREURE MARCADOR DEL MAPA
 			llista[i].setMap(null);
 		}
-	}
+	}*/
 	
 	$(document).on("ready", function(){
 		
@@ -49,13 +49,13 @@
 		var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
 				
 		if (navigator.geolocation) {
-		    function exito(pos) {
+		    /*function exito(pos) {
 				MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-			}
+			}*/
 			function falla(error) {
 				//si falla mostrar mpara en posicion por defecto
 				alert('Error en servicio Geolocalizador');
-				MuestraMapa(defaultPos); 
+				//MuestraMapa(defaultPos); 
 			}
 			
 			//maximumAge- Guarda la posicion por x minutos 
@@ -65,11 +65,11 @@
 			navigator.geolocation.getCurrentPosition(exito, falla, options );
 		}//FIN IF
 		else {
-            MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
+            //MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
         }	
 		 
 		//FUNCION DIBUJAR MAPa
-		function MuestraMapa(latlng) {
+		/*function MuestraMapa(latlng) {
 			var config = {
             zoom: 16,
             center: latlng,
@@ -98,27 +98,27 @@
 				animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 				draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
 			});
-			
+			*/
 			//PASSAR LES COORDENADES AL FORMULARI
 			formulari.find("input[name='LongX']").val(llista[1]);
 			formulari.find("input[name='LatY']").val(llista[0]);
 			
 			//DEIXAR NOMÉS 1 MARCADOR AL MAPA
 			//GUARDAR EL MARCADOR A L'ARRAY
-			marcadors_nous.push(marcador);
+			//marcadors_nous.push(marcador);
 			
 			//AGREGAR EVENT CLICK AL MARCADOR
-			google.maps.event.addListener(marcador, "click", function(){
+			/*google.maps.event.addListener(marcador, "click", function(){
 				
-			});	
+			});	*/
 			
 			//ABANS D'UBICAR EL MARCADOR EN EL MAPA TREURE TOTS ELS DEMES
 			//I AIXÍ DEIXAR-NE NOMÉS UN
 			//treure_marcadors(marcadors_nous);
 			//UBICAR EL MARCADOR EN EL MAPA
-			marcador.setMap(mapa);		
+			//marcador.setMap(mapa);		
 		
-			$.ajax({type: "POST", 
+			/*$.ajax({type: "POST", 
 				url: "http://www.grupllobet.com/apptest/App1/llista.php",
 				dataType: "text",
 				success:function(data){
@@ -218,7 +218,7 @@
 										data: ({IdUser: fIdUser, IdMarca: fIdMarca})
 									});
 									
-								});*/
+								});
 								
 							}
 						});
@@ -232,7 +232,7 @@
 				},
 				complete:function(){
 				}
-			});
+			});*/
 			
 		}
 		
@@ -246,9 +246,9 @@
 </script>
 </head>
 <body>
-	<div id="mapa">
+	<!--<div id="mapa">
 		<h2>Aquí anirà el mapa!</h2>
-	</div>
+	</div>-->
 	<div id="infor">
 		<form id="formulari">
 			<table>				
