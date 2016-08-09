@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <head>
 	<!--ESTILS DE BOOTSTRAP -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet"/>
@@ -10,6 +9,10 @@
 	<script>
 	$(function(){
 		$(document).on("ready", function(){
+			
+			var fIdIncidencia = localStorage.getItem("IdIncidencia");
+			alert (fIdIncidencia);
+			
 			$("#ferregistre").click(function(){
 				
 				var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
