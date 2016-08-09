@@ -1,8 +1,11 @@
 #Cos{
 	background-image: url(../imatges/Tablet_Grupllobet.jpg);
-	background-size: cover;
-	position:absolute;
+    background-size: cover;
 	margin: 0 auto;
+	top: 0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
 }
 #Login{
 	padding:0;
@@ -11,7 +14,6 @@
 	height:175px;
 	margin: auto;
 	margin-top: 50%;
-	margin-left: 50%;
 	position: relative;
 }
 #Login1{
