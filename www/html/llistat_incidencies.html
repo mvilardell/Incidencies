@@ -32,15 +32,10 @@
 <script>
 $(function(){
 	$(document).on("ready", function(){
-		
-		alert(localStorage.getItem("Id"));
-		
+				
 		var fIdUsuarioDestino = localStorage.getItem("Id");
-		
-		alert (fIdUsuarioDestino);
 		//$("#ID").val(" ");
-		
-		
+				
 		$.ajax({type: "POST",
 			url:"http://www.grupllobet.com/apptest/Incidencies/llista.php",
 			data:({IdUsuariodestino: fIdUsuariodestino}),
@@ -51,6 +46,7 @@ $(function(){
 	});
 
 	function Buscar(data){
+		alert(data);
 		$('#llistat').html(data);		
 	}
 });	
