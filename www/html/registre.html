@@ -12,58 +12,58 @@
 	
 		//VARIABLES GENERALS
 		var mapa = null;
-		var fIdIncidencia = localStorage.getItem("IdIncidencia");
+		
 	
 		$(document).on("ready", function(){
 			var formulari = $("#formulari");
 	
-		var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
+			var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
+					
+			if (navigator.geolocation) {
+				function exito(pos) {
+					MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+				}
+				function falla(error) {
+					//si falla mostrar mpara en posicion por defecto
+					alert('Error en servicio Geolocalizador');
+					//MuestraMapa(defaultPos); 
+				}
 				
-		if (navigator.geolocation) {
-		    function exito(pos) {
-				MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+				//maximumAge- Guarda la posicion por x minutos 
+				//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
+				//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
+				var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 5000};
+				navigator.geolocation.getCurrentPosition(exito, falla, options );
+			}//FIN IF
+			else {
+				//MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
+			}	
+			 
+			//FUNCION DIBUJAR MAPa
+			function MuestraMapa(latlng) {
+				var config = {
+				zoom: 16,
+				center: latlng,
+				disableDefaultUI: true,
+				mapTypeId: google.maps.MapTypeId.ROADMAP};
+				
+				//COORDENADES
+				var coordenades = String(latlng);//event.latLng.toString();
+				
+				//REMOURE PARENTESIS
+				coordenades = coordenades.replace("(","");
+				coordenades = coordenades.replace(")","");
+				//COORDENADES PER SEPARAT
+				var llista = coordenades.split(",");
+				
+				
+				//PASSAR LES COORDENADES AL FORMULARI
+				formulari.find("input[name='LongX']").val(llista[1]);
+				formulari.find("input[name='LatY']").val(llista[0]);
+				
 			}
-			function falla(error) {
-				//si falla mostrar mpara en posicion por defecto
-				alert('Error en servicio Geolocalizador');
-				//MuestraMapa(defaultPos); 
-			}
 			
-			//maximumAge- Guarda la posicion por x minutos 
-			//enableHighAccuracy: Se tratan de obtener los mejores resultados posible del GPS
-			//timeout: el tiempo maximo que se espera para obtener la posicion en este caso 5 segundos
-			var options = {maximumAge: 30000, enableHighAccuracy:true, timeout: 5000};
-			navigator.geolocation.getCurrentPosition(exito, falla, options );
-		}//FIN IF
-		else {
-            //MuestraMapa(defaultPos);  // No soporta geolocalizacion y dibuja el mapa en posicion Default
-        }	
-		 
-		//FUNCION DIBUJAR MAPa
-		function MuestraMapa(latlng) {
-			var config = {
-            zoom: 16,
-            center: latlng,
-			disableDefaultUI: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP};
-			
-			//COORDENADES
-			var coordenades = String(latlng);//event.latLng.toString();
-			
-			//REMOURE PARENTESIS
-			coordenades = coordenades.replace("(","");
-			coordenades = coordenades.replace(")","");
-			//COORDENADES PER SEPARAT
-			var llista = coordenades.split(",");
-			
-			
-			//PASSAR LES COORDENADES AL FORMULARI
-			formulari.find("input[name='LongX']").val(llista[1]);
-			formulari.find("input[name='LatY']").val(llista[0]);
-			
-		}
-			
-			
+			var fIdIncidencia = localStorage.getItem("IdIncidencia");
 			
 			
 			/*$("#ferregistre").click(function(){
@@ -112,26 +112,18 @@
 <body>
 	<div id="formulari">
 		<h1>REGISTRE</h1>
-		<form method="POST">
-			<table>
-			<tr>
-				<td><label>Email:</label></td> 
-				<td><input type="text" name="Email" id="Email" value=""></td>
-			</tr>
-			<tr>
-				<td><label for="LatY">Latitud:</label></td>
-				<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
-			</tr>
-			<tr>
-				<td><label for="LongX">Longitud:</label></td>
-				<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
-			</tr>
-			<tr>
-				<td><button type="button" onclick="window.location.href='../index.html'">Tornar</button></td>
-				<td><button type="button" id="ferregistre">OK</button></td>
-			</tr>
+		<form id="formulari">
+			<table>				
+				<tr>
+					<td><label for="LatY">Latitud:</label></td>
+					<td><input type="text" disabled="disabled" name="LatY" id="LatY" value=""  /></td>
+				</tr>
+				<tr>
+					<td><label for="LongX">Longitud:</label></td>
+					<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
+				</tr>
 			</table>
-		</form>	
+		</form>
 	</div>
 </body>
 </html>
