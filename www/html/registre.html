@@ -16,7 +16,7 @@
 	
 		//VARIABLES GENERALS
 		var mapa = null;
-		var fIdIncidencia = localStorage.getItem("IdIncidencia");
+		var f_IdIncidencia = localStorage.getItem("IdIncidencia");
 	
 		$(document).on("ready", function(){
 			var formulari = $("#formulari");
@@ -67,6 +67,7 @@
 				
 			}
 			
+			formulari.find("input[name='IdIncidencia']").val(f_IdIncidencia);
 			
 			
 			
@@ -119,8 +120,12 @@
 		<form method="POST">
 			<table>
 			<tr>
-				<td><label>Email:</label></td> 
-				<td><input type="text" name="Email" id="Email" value=""></td>
+				<td><label for="LatY">ID:</label></td>
+				<td><input type="text" disabled="disabled" name="IdIncidencia" id="IdIncidencia" value=""  /></td>
+			</tr>
+			<tr>
+				<td><label>Solució:</label></td> 
+				<td><input type="text" name="Solucion" id="Solucion" value=""></td>
 			</tr>
 			<tr>
 				<td><label for="LatY">Latitud:</label></td>
@@ -131,7 +136,7 @@
 				<td><input type="text" disabled="disabled" name="LongX" id="LongX" value="" /></td>
 			</tr>
 			<tr>
-				<td><button type="button" onclick="window.location.href='../index.html'">Tornar</button></td>
+				<td><button type="button" onclick="window.location.href='llistat_incidencies.html'">Tornar</button></td>
 				<td><button type="button" id="ferregistre">OK</button></td>
 			</tr>
 			</table>
