@@ -49,9 +49,9 @@
 		var defaultPos = new google.maps.LatLng(19.289168,-99.653440);
 				
 		if (navigator.geolocation) {
-		    /*function exito(pos) {
+		    function exito(pos) {
 				MuestraMapa(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-			}*/
+			}
 			function falla(error) {
 				//si falla mostrar mpara en posicion por defecto
 				alert('Error en servicio Geolocalizador');
@@ -69,14 +69,14 @@
         }	
 		 
 		//FUNCION DIBUJAR MAPa
-		/*function MuestraMapa(latlng) {
+		function MuestraMapa(latlng) {
 			var config = {
             zoom: 16,
             center: latlng,
 			disableDefaultUI: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP};
 			
-			mapa = new google.maps.Map(document.getElementById("mapa"), config);
+			//mapa = new google.maps.Map(document.getElementById("mapa"), config);
 			
 			//MOSTRAR UNA ALERTA AL HACER CLICK AL MAPA
 			//EL EVENTO CLICK EN EL MAPA OFRECE UN PARAMETRO EVENTO
@@ -92,13 +92,13 @@
 			var llista = coordenades.split(",");
 			
 			//VARIABLE PEL MARCADOR
-			var marcador = new google.maps.Marker({
+			/*var marcador = new google.maps.Marker({
 				position: latlng, //POSICIO DEL NOU MARCADOR
 				icon:'../imatges/man2.png',
 				animation: google.maps.Animation.DROP, //COM APAREIXERÀ EL MARCADOR
 				draggable:false //NO PERMETRE QUE ES PUGUI ARROSSEGAR EL MARCADOR
-			});
-			*/
+			});*/
+			
 			//PASSAR LES COORDENADES AL FORMULARI
 			formulari.find("input[name='LongX']").val(llista[1]);
 			formulari.find("input[name='LatY']").val(llista[0]);
