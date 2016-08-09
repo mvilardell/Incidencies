@@ -33,14 +33,14 @@
 $(function(){
 	$(document).on("ready", function(){
 		
-		//var fID = $("#ID").val();
+		var fIdUsuarioDestino = localStorage.getItem("Id");
 					
 		//$("#ID").val(" ");
 		
 		
 		$.ajax({type: "POST",
 			url:"http://www.grupllobet.com/apptest/Incidencies/llista.php",
-			//data:({ID: fID}),
+			data:({IdUsuariodestino: fIdUsuariodestino}),
 			cache: false,
 			dataType: "text",
 			success: Buscar
