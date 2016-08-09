@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+<style>
+	#infor{
+		top:0px;
+		left:0px;
+		position:absolute;
+	}
+</style>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!--ESTILS DE BOOTSTRAP -->
+<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!--ARXIUS JAVASCRIPT DE BOOTSTRAP -->
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	$(document).on("ready", function(){
+		
+		//var fID = $("#ID").val();
+					
+		//$("#ID").val(" ");
+		
+		
+		$.ajax({type: "POST",
+			url:"http://www.grupllobet.com/apptest/Incidencies/llista.php",
+			//data:({ID: fID}),
+			cache: false,
+			dataType: "text",
+			success: Buscar
+		});
+	});
+
+	function Buscar(data){
+		$('#llistat').html(data);		
+	}
+});	
+</script>
+</head>
+<body>
+	<!--<button type="button" id="mirarIncidencies">Veure Incidències pendents</button>-->
+	<div id="llistat">
+		
+	</div>	
+</body>
+</html>
