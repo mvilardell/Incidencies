@@ -38,8 +38,6 @@ $(function(){
 				
 		$.ajax({type: "POST",
 			url:"http://www.grupllobet.com/apptest/Incidencies/llista.php",
-			data:({IdUsuariodestino: fIdUsuariodestino}),
-			alert(data);
 			cache: false,
 			dataType: "text",
 			success: Buscar
@@ -47,7 +45,6 @@ $(function(){
 	});
 
 	function Buscar(data){
-		alert(data);
 		$('#llistat').html(data);		
 	}
 });	
