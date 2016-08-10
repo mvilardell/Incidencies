@@ -82,55 +82,41 @@
 					formulari.find("input[name='Descripcion']").val(dades_incidencia[1]);
 					formulari.find("input[name='Fecha']").val(dades_incidencia[2]);
 					formulari.find("input[name='Hora']").val(dades_incidencia[3]);
+					$("#Solucion").focus();
 				}
 				
 			});
 
 			
-			/*$("#ferregistre").click(function(){
+			$("#ferregistre").click(function(){				
 				
-				var expresio = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-				var fEmail = $("#Email").val();
-				var fPassw = $("#Passw").val();
-				var fPassw2 = $("#Passw2").val();
-				if(fEmail == ""){
-					alert('Email necessari');
-					$("#Email").focus();
+				var fSolucion = $("#Solucion").val();
+
+				if(fSolucion == ""){
+					alert('Solució necessari');
+					$("#Solucion").focus();
 				}else{
-					if(!expresio.test(fEmail)){	
-						$("#Email").val("");
-						alert('Email no vàlid');
-						$("#Email").focus();
-					}else{
-					
-						if(fPassw != fPassw2){						
-							$("#Passw").val("");
-							$("#Passw2").val("");
-							alert("Contrasenyes diferents");
-						}else{
-							$("#Email").val("");
-							$("#Passw").val("");
-							$("#Passw2").val("");
-							$.ajax({type: "POST",
-								url:"http://www.grupllobet.com/apptest/App1/registre.php",
-								data:({Email: fEmail, Passw: fPassw}),
-								cache: false,
-								dataType: "text",
-								success: Enviar
-							});
-							function Enviar(data){
-								alert(data);
-								location.href="../index.html";
-							}
-						}
+
+					$("#Solucion").val("");
+					$.ajax({type: "POST",
+						url:"http://www.grupllobet.com/apptest/Incidencies/update.php",
+						data:({ID: f_IdIncidencia, Solucion: fSolucion}),
+						cache: false,
+						dataType: "text",
+						success: Update
+					});
+					function Update(data){
+						alert(data);
+						location.href="llistat_incidencies.html";
 					}
+					
 				}
-			});*/
+			});
 		});
 	});
 	</script>
 </head>
-<body>
+<body style="background: gray">
 	<div id="formulari">
 		<h1>REGISTRE</h1>
 		<form method="POST">
@@ -169,7 +155,7 @@
 			</tr>
 			<tr>
 				<td><button type="button" onclick="window.location.href='llistat_incidencies.html'">Tornar</button></td>
-				<td><button type="button" id="ferregistre">OK</button></td>
+				<td><button type="button" id="ferregistre">Finalitzar incidència</button></td>
 			</tr>
 			</table>
 		</form>	
