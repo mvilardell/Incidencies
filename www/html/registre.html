@@ -102,7 +102,7 @@
 					$("#Solucion").val("");
 					$.ajax({type: "POST",
 						url:"http://www.grupllobet.com/apptest/Incidencies/update.php",
-						data:({ID: f_IdIncidencia, Solucion: fSolucion}),
+						data:({ID: f_IdIncidencia, Solucion: fSolucion, LatY: fLatY, LongX: fLongX}),
 						cache: false,
 						dataType: "text",
 						success: Update
