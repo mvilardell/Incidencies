@@ -69,7 +69,20 @@
 			
 			formulari.find("input[name='IdIncidencia']").val(f_IdIncidencia);
 			
-			
+			$.ajax({type: "POST",
+				url:"http://www.grupllobet.com/apptest/Incidencies/DadesIncidencia.php",
+				data:({ID: f_IdIncidencia}),
+				cache: false,
+				dataType: "text",
+				success: function(data){
+					var dades_incidencia = data.split("#");
+					
+					formulari.find("input[name='UsuariAlta']").val(dades_incidencia[0]);
+					formulari.find("input[name='Descripcion']").val(dades_incidencia[1]);
+				}
+				
+			});
+
 			
 			/*$("#ferregistre").click(function(){
 				
@@ -120,8 +133,16 @@
 		<form method="POST">
 			<table>
 			<tr>
-				<td><label for="LatY">ID:</label></td>
+				<td><label for="IdIncidencia">ID:</label></td>
 				<td><input type="text" disabled="disabled" name="IdIncidencia" id="IdIncidencia" value=""  /></td>
+			</tr>
+			<tr>
+				<td><label for="UsuariAlta">Usuari alta:</label></td>
+				<td><input type="text" disabled="disabled" name="UsuariAlta" id="UsuariAlta" value=""  /></td>
+			</tr>
+			<tr>
+				<td><label for="Descripcion">Descripció:</label></td>
+				<td><input type="text" disabled="disabled" name="Descripcion" id="Descripcion" value=""  /></td>
 			</tr>
 			<tr>
 				<td><label>Solució:</label></td> 
