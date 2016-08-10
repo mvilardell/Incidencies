@@ -79,6 +79,8 @@
 					
 					formulari.find("input[name='UsuariAlta']").val(dades_incidencia[0]);
 					formulari.find("input[name='Descripcion']").val(dades_incidencia[1]);
+					formulari.find("input[name='Fecha']").val(dades_incidencia[2]);
+					formulari.find("input[name='Hora']").val(dades_incidencia[3]);
 				}
 				
 			});
@@ -143,6 +145,14 @@
 			<tr>
 				<td><label for="Descripcion">Descripció:</label></td>
 				<td><input type="text" disabled="disabled" name="Descripcion" id="Descripcion" value=""  /></td>
+			</tr>
+			<tr>
+				<td><label for="Fecha">Data obertura:</label></td>
+				<td><input type="text" disabled="disabled" name="Fecha" id="Fecha" value=""  /></td>
+			</tr>
+			<tr>
+				<td><label for="Hora">Hora obertura:</label></td>
+				<td><input type="text" disabled="disabled" name="Hora" id="Hora" value=""  /></td>
 			</tr>
 			<tr>
 				<td><label>Solució:</label></td> 
